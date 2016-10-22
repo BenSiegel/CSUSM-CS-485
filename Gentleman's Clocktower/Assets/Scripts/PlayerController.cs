@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float jump;
     
 	private Transform tm;
-   
 
     bool ground = true;
 
@@ -19,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
     {
-        if (Input.GetKey(KeyCode.W) && ground == true)
+        if(Input.GetKey(KeyCode.W) && ground == true)
         {
             transform.Translate(Vector3.up * jump * Time.deltaTime);
             ground = false;
