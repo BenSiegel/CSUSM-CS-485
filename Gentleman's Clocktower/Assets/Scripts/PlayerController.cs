@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
     {
+        if(!ground && transform.position.y >= 0 && transform.position.y <= .01)
+        {
+            ground = true;
+        }
+
         if (Input.GetKey(KeyCode.W) && ground == true)
         {
             transform.Translate(Vector3.up * jump * Time.deltaTime);
