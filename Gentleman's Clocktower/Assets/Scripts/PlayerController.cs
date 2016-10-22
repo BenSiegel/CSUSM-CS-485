@@ -5,21 +5,34 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed;
+    public float jump;
+    
+	private Transform tm;
+   
 
-    private Rigidbody rb;
+    bool ground = true;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+		tm = GetComponent<Transform>();
     }
 
-    void FixedUpdate()
+	void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        if (Input.GetKey(KeyCode.W) && ground == true)
+        {
+            transform.Translate(Vector3.up * jump * Time.deltaTime);
+            ground = false;
+        }
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        if(Input.GetKey(KeyCode.A))
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
 
-        rb.AddForce(movement * speed);
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
     }
 }
