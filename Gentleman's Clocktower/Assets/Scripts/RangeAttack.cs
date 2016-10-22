@@ -20,8 +20,6 @@ public class RangeAttack : MonoBehaviour {
 		if(Input.GetMouseButtonDown (1)){//right click
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			gun.transform.LookAt (mousePos);
-			gun.transform.rotation.x = 0f;
-			gun.transform.rotation.y = 0f;
 			gun.transform.localScale = new Vector3 (1f,1f,1f);
 			shownTime = Time.time;
 		}
