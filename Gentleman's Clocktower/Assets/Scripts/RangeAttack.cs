@@ -47,6 +47,6 @@ public class RangeAttack : MonoBehaviour {
 			           gunEnd.GetComponent<Transform>().position, 
 			           Quaternion.identity);
 		firedBullet.GetComponent<Rigidbody2D>().AddForce(
-			firedBullet.GetComponent<Transform>().forward * firePower);
+			gunEnd.GetComponent<Transform>().up * firePower);
 	}
 }
