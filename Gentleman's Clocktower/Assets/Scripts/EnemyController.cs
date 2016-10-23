@@ -12,4 +12,10 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionEnter2D(Collision2D collision){
+		Debug.Log ("Col");
+		if (collision.gameObject.tag == "eDamage")
+			DestroyObject(gameObject,0f);
+	}
 }
