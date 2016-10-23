@@ -14,8 +14,18 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		Debug.Log ("Col");
-		if (collision.gameObject.tag == "eDamage")
-			DestroyObject(gameObject,0f);
+		if(collision.gameObject.tag.Equals("eDamage")){
+			OnAction ();
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collision){
+		if(collision.gameObject.tag.Equals("eDamage")){
+			OnAction ();
+		}
+	}
+
+	void OnAction(){
+		DestroyObject(gameObject,0f);
 	}
 }
