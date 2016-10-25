@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
+	public GameObject briefcase;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -26,6 +28,9 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void OnAction(){
+		Transform tm = GetComponent<Transform> ();
+		Vector3 pos = new Vector3 (tm.position.x, tm.position.y, tm.position.z);
+		GameObject briefcaseNew = (GameObject) Instantiate(briefcase, pos, Quaternion.identity);
 		DestroyObject(gameObject,0f);
 	}
 }
