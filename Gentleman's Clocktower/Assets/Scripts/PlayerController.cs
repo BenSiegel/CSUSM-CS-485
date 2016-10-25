@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if(!ground && transform.position.y >= 0 && transform.position.y <= .01)
+		if(!ground && gameObject.tag.Equals("Ground"))
 		{
 			ground = true;
 		}

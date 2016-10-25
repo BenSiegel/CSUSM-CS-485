@@ -5,6 +5,7 @@ public class SpawnEnemies : MonoBehaviour {
 
 	//public int numOfEnemies;
 	public GameObject enemy;
+    public GameObject briefcase;
 	public float timeBetweenSpawns;
 
 	private Vector3 min;
@@ -29,6 +30,12 @@ public class SpawnEnemies : MonoBehaviour {
 				Random.Range(min.y, max.y),
 				Random.Range(min.z, max.z));
 			GameObject NewEnemy = (GameObject)Instantiate(enemy, pos, Quaternion.identity);
-		}
+
+            if (!enemy)
+            {
+                Vector3 posB = new Vector3(pos.x, pos.y, pos.z);
+                GameObject NewBriefCase = (GameObject)Instantiate(briefcase, posB, Quaternion.identity);
+            }
+        }
 	}
 }

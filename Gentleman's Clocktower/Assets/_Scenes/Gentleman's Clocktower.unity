@@ -823,6 +823,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.0392865
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013120179614, guid: 8e94626c2ad1ffc448306e632becb41f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e94626c2ad1ffc448306e632becb41f, type: 2}
   m_IsPrefabParent: 0
@@ -1091,6 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1000011495110142, guid: 35df5e994e70148419c57ca287fd298d, type: 2}
+  briefcase: {fileID: 0}
   timeBetweenSpawns: 2
 --- !u!1001 &2067316923
 Prefab:
