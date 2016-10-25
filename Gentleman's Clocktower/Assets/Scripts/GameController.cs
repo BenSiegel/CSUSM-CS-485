@@ -1,4 +1,4 @@
-﻿/*using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -25,10 +25,6 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if(restart)
-        {
-            
-        }
+
 	}
 }
-*/

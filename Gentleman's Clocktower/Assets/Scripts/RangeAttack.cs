@@ -7,12 +7,14 @@ public class RangeAttack : MonoBehaviour {
 	public GameObject gunEnd;
 	public float disappearDelay;
 	public float firePower;
+    public float gunDelay;
 	private Transform gun;
+    private int bulletCount;
 	private float shownTime;
 
 	// Use this for initialization
 	void Start () {
-		gun = GetComponentInChildren<Transform>();
+        gun = GetComponentInChildren<Transform>();
 		gun.transform.localScale = new Vector3 (0f,0f,0f);
 		shownTime = Time.time;
 	}
@@ -20,10 +22,13 @@ public class RangeAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetMouseButtonDown (1)){//right click
-			showGun();
-			pointGun();
-			fireGun();
+            gunDelay++;
+            showGun();
+            pointGun();
+            if(gunDelay % 5 == 0)
+            { fireGun(); }
 		}
+
 		if(Time.time - shownTime > disappearDelay)
 			gun.transform.localScale = new Vector3 (0f,0f,0f);//hide gun
 	}
@@ -42,11 +47,12 @@ public class RangeAttack : MonoBehaviour {
 		gun.rotation = Quaternion.Euler (new Vector3 (0f, 0f, angle));
 	}
 
-	void fireGun(){
-		GameObject firedBullet = (GameObject)Instantiate (bullet, 
-			           gunEnd.GetComponent<Transform>().position, 
-			           Quaternion.identity);
-		firedBullet.GetComponent<Rigidbody2D>().AddForce(
-			gunEnd.GetComponent<Transform>().up * firePower);
-	}
+    void fireGun()
+    {
+           GameObject firedBullet = (GameObject)Instantiate(bullet,
+                           gunEnd.GetComponent<Transform>().position,
+                           Quaternion.identity);
+            firedBullet.GetComponent<Rigidbody2D>().AddForce(
+                gunEnd.GetComponent<Transform>().up * firePower);
+    }
 }
