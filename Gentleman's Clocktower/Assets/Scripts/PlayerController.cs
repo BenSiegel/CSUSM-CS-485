@@ -4,42 +4,44 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 
-	public float speed;
-	public float jump;
+    public float speed;
+    public float jump;
 
-	private Transform tm;
+    private Transform tm;
+    private bool canJump = true;
 
+    void Start()
+    {
+        tm = GetComponent<Transform>();
+    }
 
-	bool ground = true;
+    void Update()
+    {
+        WASD();
+    }
 
-	void Start()
-	{
-		tm = GetComponent<Transform>();
-	}
+    void WASD()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
 
-	void Update()
-	{
-		if(!ground && gameObject.tag.Equals("Ground"))
-		{
-			ground = true;
-		}
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
 
-		if (Input.GetKey(KeyCode.W) && ground == true)
-		{
-			transform.Translate(Vector3.up * jump * Time.deltaTime);
-			ground = false;
-		}
+        if (Input.GetKey(KeyCode.W) && canJump)
+        {
+            transform.Translate(Vector3.up * jump * Time.deltaTime);
+            canJump = false;
+        }
+    }
 
-		if (Input.GetKey(KeyCode.A))
-		{
-			transform.position += Vector3.left * speed * Time.deltaTime;
-		}
-
-		if (Input.GetKey(KeyCode.D))
-		{
-			transform.position += Vector3.right * speed * Time.deltaTime;
-		}
-	}
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground"))
+            canJump = true;
+    }
 }
-
-
