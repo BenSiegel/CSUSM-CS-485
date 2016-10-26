@@ -7,7 +7,6 @@ public class RangeAttack : MonoBehaviour {
 	public GameObject gunEnd;
 	public float disappearDelay;
 	public float firePower;
-    public float gunDelay;
     public float timeBetweenShooting;
 	private Transform gun;
     private int bulletCount;
@@ -23,13 +22,11 @@ public class RangeAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(1) && shooting == false)
+        if (Input.GetMouseButtonDown(1))
         {//right click
-            gunDelay++;
             showGun();
             pointGun();
             fireGun();
-            shooting = true;
 		}
 
 		if(Time.time - shownTime > disappearDelay)
@@ -52,13 +49,10 @@ public class RangeAttack : MonoBehaviour {
 
     void fireGun()
     {
-        if (shooting)
-        {
-            GameObject firedBullet = (GameObject)Instantiate(bullet,
-                            gunEnd.GetComponent<Transform>().position,
-                            Quaternion.identity);
-            firedBullet.GetComponent<Rigidbody2D>().AddForce(
-                gunEnd.GetComponent<Transform>().up * firePower * timeBetweenShooting);
-        }
+        GameObject firedBullet = (GameObject)Instantiate(bullet,
+                        gunEnd.GetComponent<Transform>().position,
+                        Quaternion.identity);
+        firedBullet.GetComponent<Rigidbody2D>().AddForce(
+            gunEnd.GetComponent<Transform>().up * firePower);
     }
 }
