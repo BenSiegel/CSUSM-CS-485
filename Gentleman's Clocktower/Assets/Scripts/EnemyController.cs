@@ -4,17 +4,23 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 
 	public GameObject briefcase;
-	public float enemySpeed;
+    public GameObject specialWeaponA;
+    public GameObject specialWeaponB;
+    public GameObject specialWeaponC;
+
+    public float enemySpeed;
 	public float diveDistence;
 
 	enum Actions: int {Track=0, Dive, Float};
 	private int currentState;
 	private GameObject player;
 	private Vector3 movePoint;
+    private int randChance;
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
 		player = GameObject.FindGameObjectWithTag("Player");
+        randChance = 0;
 	}
 	
 	// Update is called once per frame
@@ -74,6 +80,54 @@ public class EnemyController : MonoBehaviour {
 		Transform tm = GetComponent<Transform> ();
 		Vector3 pos = new Vector3 (tm.position.x, tm.position.y, tm.position.z);
 		GameObject briefcaseNew = (GameObject) Instantiate(briefcase, pos, Quaternion.identity);
-		DestroyObject(gameObject,0f);
+
+        var chanceForSpecWep = Random.Range(1, 100);
+        if(chanceForSpecWep >= 1 && chanceForSpecWep <= 25)
+        {
+            var specialWeaponSpawn = Random.Range(1, 100);
+            if (specialWeaponSpawn >= 1 && specialWeaponSpawn <= 50)
+            {
+                var smSpawn = Random.Range(1, 100);
+
+                if (smSpawn >= 1 && smSpawn <= 50)
+                {
+                    GameObject specialWeaponNewA = (GameObject)Instantiate(specialWeaponA, pos, Quaternion.identity);
+                }
+
+                else if (smSpawn >= 51 && smSpawn <= 81)
+                {
+                    GameObject specialWeaponNewB = (GameObject)Instantiate(specialWeaponB, pos, Quaternion.identity);
+                }
+
+                else if (smSpawn >= 82 && smSpawn <= 100)
+                {
+                    GameObject specialWeaponNewC = (GameObject)Instantiate(specialWeaponC, pos, Quaternion.identity);
+                }
+            }
+
+            else if (specialWeaponSpawn >= 51 && specialWeaponSpawn <= 100)
+            {
+                var srSpawn = Random.Range(0, 100);
+
+                if (srSpawn >= 0 && srSpawn <= 50)
+                {
+                    GameObject specialWeaponNewA = (GameObject)Instantiate(specialWeaponA, pos, Quaternion.identity);
+                }
+
+                else if (srSpawn >= 51 && srSpawn <= 81)
+                {
+                    GameObject specialWeaponNewB = (GameObject)Instantiate(specialWeaponB, pos, Quaternion.identity);
+                }
+
+                else if (srSpawn >= 82 && srSpawn <= 100)
+                {
+                    GameObject specialWeaponNewC = (GameObject)Instantiate(specialWeaponC, pos, Quaternion.identity);
+                }
+            }
+        }
+
+        
+
+        DestroyObject(gameObject,0f);
 	}
 }
