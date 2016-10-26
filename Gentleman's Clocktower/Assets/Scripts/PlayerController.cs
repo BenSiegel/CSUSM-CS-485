@@ -6,13 +6,15 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float jump;
+	public int health;
 
     private Transform tm;
     private bool canJump = true;
 
     void Start()
     {
-        tm = GetComponent<Transform>();
+		health = 10;
+		tm = GetComponent<Transform>();
     }
 
     void Update()
@@ -43,5 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
             canJump = true;
+		if (col.gameObject.tag.Equals ("Enemy"))
+			health--;
     }
 }

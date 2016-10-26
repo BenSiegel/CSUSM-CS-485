@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jump: 50
+  health: 10
 --- !u!212 &1610355641
 SpriteRenderer:
   m_ObjectHideFlags: 0
