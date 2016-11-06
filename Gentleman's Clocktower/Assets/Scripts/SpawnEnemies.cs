@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnEnemies : MonoBehaviour {
-
-	//public int numOfEnemies;
-	//public GameObject enemy;
-    
+public class SpawnEnemies : MonoBehaviour
+{
     public GameObject enemyFlying1; 
     public GameObject enemyFlying2;
     public GameObject enemyFlying3;
@@ -13,30 +10,8 @@ public class SpawnEnemies : MonoBehaviour {
     public GameObject enemyGround2;    
      
     public float timeBetweenSpawns;
-    public int fly1health;
-    public int fly1damage;
-    public int fly1armour;
-    public int fly1speed;
 
-    public int fly2health;
-    public int fly2damage;
-    public int fly2armour;
-    public int fly2speed;
-
-    public int fly3health;
-    public int fly3damage;
-    public int fly3armour;
-    public int fly3speed;
-
-    public int ground1health;
-    public int ground1damage;
-    public int ground1armour;
-    public int ground1speed;
-
-    public int ground2health;
-    public int ground2damage;
-    public int ground2armour;
-    public int ground2speed;
+   
 
     private Vector3 min;
 	private Vector3 max;
@@ -66,7 +41,7 @@ public class SpawnEnemies : MonoBehaviour {
 				Random.Range(min.y, max.y),
 				Random.Range(min.z, max.z));
             //GameObject NewEnemy = (GameObject)Instantiate(enemy, pos, Quaternion.identity);
-            spawnRate = Random.Range(1, 100);
+            spawnRate = Random.Range(1, 34);
             if (spawnRate >= 1 && spawnRate <= 6)
             {
                 GameObject NewEnemyFlying1 = (GameObject)Instantiate(enemyFlying1, pos, Quaternion.identity);

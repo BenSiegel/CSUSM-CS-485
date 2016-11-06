@@ -4,11 +4,20 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 
 	public GameObject briefcase;
-    public GameObject specialWeaponA;
-    public GameObject specialWeaponB;
-    public GameObject specialWeaponC;
+    public GameObject meleeWeaponA;
+    public GameObject meleeWeaponB;
+    public GameObject meleeWeaponC;
 
-    public float enemySpeed;
+    public GameObject rangeWeaponA;
+    public GameObject rangeWeaponB;
+    public GameObject rangeWeaponC;
+
+
+    public int health;
+    public int damage;
+    public int armour;
+    public int speed;
+
 	public float diveDistence;
 
 	enum Actions: int {Track=0, Dive, Float};
@@ -38,42 +47,59 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
-	void Track(){
+	void Track()
+    {
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
-		tm.Translate ((playerTM.position - tm.position) * Time.deltaTime);
-		if ((playerTM.position - tm.position).magnitude < diveDistence) {
+		tm.Translate ((playerTM.position - tm.position) * Time.deltaTime * speed);
+		if ((playerTM.position - tm.position).magnitude < diveDistence)
+        {
 			currentState = (int)Actions.Dive;
 			movePoint = player.GetComponent<Transform> ().position;
 		}
 	}
 
-	void Dive(){
+	void Dive()
+    {
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate ((movePoint - tm.position) * Time.deltaTime * enemySpeed);
-		if ((tm.position-movePoint).magnitude < 1f) {
+		tm.Translate ((movePoint - tm.position) * Time.deltaTime * speed);
+		if ((tm.position-movePoint).magnitude < 1f)
+        {
 			currentState = (int)Actions.Float;
 			movePoint = tm.position + Vector3.up * diveDistence;
 		}
 	}
 
-	void Float(){
+	void Float()
+    {
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate ((movePoint - tm.position) * Time.deltaTime);
+		tm.Translate ((movePoint - tm.position) * Time.deltaTime * speed);
 		if ((tm.position-movePoint).magnitude < 1f)
 			currentState = (int)Actions.Track;
 	}
 
-	void OnCollisionEnter2D(Collision2D collision){
-		if(collision.gameObject.tag.Equals("eDamage")){
-			DeadAction ();
-		}
+	void OnCollisionEnter2D(Collision2D collision)
+    {
+		if(collision.gameObject.tag.Equals("eDamage"))
+        {
+            health--;
+            if(health == 0)
+            {
+                DeadAction();
+            }
+        }
 	}
 
-	void OnTriggerEnter2D(Collider2D collision){
-		if(collision.gameObject.tag.Equals("eDamage")){
-			DeadAction ();
-		}
+	void OnTriggerEnter2D(Collider2D collision)
+    {
+		if(collision.gameObject.tag.Equals("eDamage"))
+        {
+            health--;
+            if (health == 0)
+            {
+                DeadAction();
+            }
+        }
 	}
 
 	void DeadAction(){
@@ -91,17 +117,17 @@ public class EnemyController : MonoBehaviour {
 
                 if (smSpawn >= 1 && smSpawn <= 50)
                 {
-                    GameObject specialWeaponNewA = (GameObject)Instantiate(specialWeaponA, pos, Quaternion.identity);
+                    GameObject specialWeaponNewA = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
                 }
 
                 else if (smSpawn >= 51 && smSpawn <= 81)
                 {
-                    GameObject specialWeaponNewB = (GameObject)Instantiate(specialWeaponB, pos, Quaternion.identity);
+                    GameObject specialWeaponNewB = (GameObject)Instantiate(meleeWeaponB, pos, Quaternion.identity);
                 }
 
                 else if (smSpawn >= 82 && smSpawn <= 100)
                 {
-                    GameObject specialWeaponNewC = (GameObject)Instantiate(specialWeaponC, pos, Quaternion.identity);
+                    GameObject specialWeaponNewC = (GameObject)Instantiate(meleeWeaponC, pos, Quaternion.identity);
                 }
             }
 
@@ -111,22 +137,20 @@ public class EnemyController : MonoBehaviour {
 
                 if (srSpawn >= 0 && srSpawn <= 50)
                 {
-                    GameObject specialWeaponNewA = (GameObject)Instantiate(specialWeaponA, pos, Quaternion.identity);
+                    GameObject specialWeaponNewA = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
                 }
 
                 else if (srSpawn >= 51 && srSpawn <= 81)
                 {
-                    GameObject specialWeaponNewB = (GameObject)Instantiate(specialWeaponB, pos, Quaternion.identity);
+                    GameObject specialWeaponNewB = (GameObject)Instantiate(rangeWeaponB, pos, Quaternion.identity);
                 }
 
                 else if (srSpawn >= 82 && srSpawn <= 100)
                 {
-                    GameObject specialWeaponNewC = (GameObject)Instantiate(specialWeaponC, pos, Quaternion.identity);
+                    GameObject specialWeaponNewC = (GameObject)Instantiate(rangeWeaponC, pos, Quaternion.identity);
                 }
             }
         }
-
-        
 
         DestroyObject(gameObject,0f);
 	}

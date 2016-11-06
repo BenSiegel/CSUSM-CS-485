@@ -1307,37 +1307,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 322ae66052eb0234f93191a08f3c9879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFlying1: {fileID: 1000011495110142, guid: 35df5e994e70148419c57ca287fd298d,
+  enemyFlying1: {fileID: 1000013377641074, guid: 117b1692b5df8ef46a1d06501a92a2b3,
     type: 2}
-  enemyFlying2: {fileID: 1000011495110142, guid: 35df5e994e70148419c57ca287fd298d,
+  enemyFlying2: {fileID: 1000013211777610, guid: 958616e1d2a70e74f9465ae54080c921,
     type: 2}
-  enemyFlying3: {fileID: 1000011495110142, guid: 35df5e994e70148419c57ca287fd298d,
+  enemyFlying3: {fileID: 1000012089259778, guid: ef90d5555cf087e46831981c51010558,
     type: 2}
-  enemyGround1: {fileID: 1000010978192150, guid: 30e6616a29f49f8478f2f787200a7701,
+  enemyGround1: {fileID: 1000010597397674, guid: ea031c3481640dc4182e3c0d4f9265f1,
     type: 2}
-  enemyGround2: {fileID: 1000010978192150, guid: 30e6616a29f49f8478f2f787200a7701,
+  enemyGround2: {fileID: 1000010537529554, guid: 502b05ceb596e9846beb1d016a72d6ca,
     type: 2}
-  timeBetweenSpawns: 2
-  fly1health: 2
-  fly1damage: 2
-  fly1armour: 2
-  fly1speed: 1
-  fly2health: 2
-  fly2damage: 2
-  fly2armour: 2
-  fly2speed: 2
-  fly3health: 2
-  fly3damage: 2
-  fly3armour: 2
-  fly3speed: 3
-  ground1health: 2
-  ground1damage: 2
-  ground1armour: 2
-  ground1speed: 4
-  ground2health: 2
-  ground2damage: 2
-  ground2armour: 2
-  ground2speed: 5
+  timeBetweenSpawns: 0.5
 --- !u!1001 &2067316923
 Prefab:
   m_ObjectHideFlags: 0

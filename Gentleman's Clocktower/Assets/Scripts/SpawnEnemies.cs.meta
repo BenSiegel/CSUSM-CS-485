@@ -1,10 +1,20 @@
 fileFormatVersion: 2
 guid: 322ae66052eb0234f93191a08f3c9879
-timeCreated: 1477187115
+timeCreated: 1478402373
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyFlying1: {fileID: 1000013377641074, guid: 117b1692b5df8ef46a1d06501a92a2b3,
+      type: 2}
+  - enemyFlying2: {fileID: 1000013211777610, guid: 958616e1d2a70e74f9465ae54080c921,
+      type: 2}
+  - enemyFlying3: {fileID: 1000012089259778, guid: ef90d5555cf087e46831981c51010558,
+      type: 2}
+  - enemyGround1: {fileID: 1000010597397674, guid: ea031c3481640dc4182e3c0d4f9265f1,
+      type: 2}
+  - enemyGround2: {fileID: 1000010537529554, guid: 502b05ceb596e9846beb1d016a72d6ca,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
