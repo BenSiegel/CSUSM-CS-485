@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jump: 50
+  jump: 2
   health: 10
 --- !u!212 &1610355641
 SpriteRenderer:
