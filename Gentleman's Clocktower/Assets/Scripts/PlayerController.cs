@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
             canJump = true;
-		if (col.gameObject.tag.Equals ("Enemy"))
-			health--;
+        if (col.gameObject.tag.Equals("Enemy"))
+            health--;        
     }
+     
 }

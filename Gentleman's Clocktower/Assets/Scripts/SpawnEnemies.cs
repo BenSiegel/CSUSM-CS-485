@@ -44,23 +44,23 @@ public class SpawnEnemies : MonoBehaviour
             spawnRate = Random.Range(1, 34);
             if (spawnRate >= 1 && spawnRate <= 6)
             {
-                GameObject NewEnemyFlying1 = (GameObject)Instantiate(enemyFlying1, pos, Quaternion.identity);
+                GameObject NewEnemy = (GameObject)Instantiate(enemyFlying1, pos, Quaternion.identity);
             }
              if (spawnRate >= 7 && spawnRate <= 13)
             {
-                GameObject NewEnemyFlying2 = (GameObject)Instantiate(enemyFlying2, pos, Quaternion.identity);
+                GameObject NewEnemy = (GameObject)Instantiate(enemyFlying2, pos, Quaternion.identity);
             }
            else if (spawnRate >= 14 &&spawnRate <= 20)
             {
-                GameObject NewEnemyFlying3 = (GameObject)Instantiate(enemyFlying3, pos, Quaternion.identity);
+                GameObject NewEnemy = (GameObject)Instantiate(enemyFlying3, pos, Quaternion.identity);
             }
             else if (spawnRate >= 21 && spawnRate <= 26)
             {
-                GameObject NewEnemyGround1 = (GameObject)Instantiate(enemyGround1, pos, Quaternion.identity);
+                GameObject NewEnemy = (GameObject)Instantiate(enemyGround1, pos, Quaternion.identity);
             }
             else if (spawnRate >= 27 && spawnRate <= 34)
             {
-                GameObject NewEnemyGround2 = (GameObject)Instantiate(enemyGround2, pos, Quaternion.identity);
+                GameObject NewEnemy = (GameObject)Instantiate(enemyGround2, pos, Quaternion.identity);
             }
         }
 	}

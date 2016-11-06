@@ -85,6 +85,7 @@ public class EnemyController : MonoBehaviour {
             health--;
             if(health == 0)
             {
+                spawnWeapons(collision);
                 DeadAction();
             }
         }
@@ -107,8 +108,16 @@ public class EnemyController : MonoBehaviour {
 		Vector3 pos = new Vector3 (tm.position.x, tm.position.y, tm.position.z);
 		GameObject briefcaseNew = (GameObject) Instantiate(briefcase, pos, Quaternion.identity);
 
+        DestroyObject(gameObject,0f);
+	}
+
+    void spawnWeapons(Collision2D col)
+    {
+        Transform tm = GetComponent<Transform>();
+        Vector3 pos = new Vector3(tm.position.x, tm.position.y, tm.position.z);
+
         var chanceForSpecWep = Random.Range(1, 100);
-        if(chanceForSpecWep >= 1 && chanceForSpecWep <= 25)
+        if (chanceForSpecWep >= 1 && chanceForSpecWep <= 25)
         {
             var specialWeaponSpawn = Random.Range(1, 100);
             if (specialWeaponSpawn >= 1 && specialWeaponSpawn <= 50)
@@ -117,17 +126,17 @@ public class EnemyController : MonoBehaviour {
 
                 if (smSpawn >= 1 && smSpawn <= 50)
                 {
-                    GameObject specialWeaponNewA = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
+                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
                 }
 
                 else if (smSpawn >= 51 && smSpawn <= 81)
                 {
-                    GameObject specialWeaponNewB = (GameObject)Instantiate(meleeWeaponB, pos, Quaternion.identity);
+                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponB, pos, Quaternion.identity);
                 }
 
                 else if (smSpawn >= 82 && smSpawn <= 100)
                 {
-                    GameObject specialWeaponNewC = (GameObject)Instantiate(meleeWeaponC, pos, Quaternion.identity);
+                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponC, pos, Quaternion.identity);
                 }
             }
 
@@ -137,21 +146,19 @@ public class EnemyController : MonoBehaviour {
 
                 if (srSpawn >= 0 && srSpawn <= 50)
                 {
-                    GameObject specialWeaponNewA = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
+                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
                 }
 
                 else if (srSpawn >= 51 && srSpawn <= 81)
                 {
-                    GameObject specialWeaponNewB = (GameObject)Instantiate(rangeWeaponB, pos, Quaternion.identity);
+                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponB, pos, Quaternion.identity);
                 }
 
                 else if (srSpawn >= 82 && srSpawn <= 100)
                 {
-                    GameObject specialWeaponNewC = (GameObject)Instantiate(rangeWeaponC, pos, Quaternion.identity);
+                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponC, pos, Quaternion.identity);
                 }
             }
         }
-
-        DestroyObject(gameObject,0f);
-	}
+    }
 }
