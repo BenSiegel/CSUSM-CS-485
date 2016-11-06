@@ -8,6 +8,7 @@ public class GolemMinibossScript : MonoBehaviour {
 	public float chargeSpeed;
 	public float chargeTime;
 	public float jumpHight;
+	public float slamDownSpeed;
 
 	enum Actions: int {Track=0, Jump, SlamDown, Charge};
 	public int currentAction;
@@ -15,7 +16,6 @@ public class GolemMinibossScript : MonoBehaviour {
 	private Vector3 moveToPoint;
 	private float actionTime;
 	private bool chargeRight;
-	private GameObject[] arms;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,6 @@ public class GolemMinibossScript : MonoBehaviour {
 		actionTime = Time.time;
 		chargeRight = false;
 		moveToPoint = Vector3.zero;
-
 	}
 	
 	// Update is called once per frame
@@ -78,6 +77,7 @@ public class GolemMinibossScript : MonoBehaviour {
 
 	void Jump(){
 		Transform tm = GetComponent<Transform> ();
+		Transform playerTM = player.GetComponent<Transform> ();
 		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
 		rb.isKinematic = true;
 		tm.Translate (new Vector3(0f, moveToPoint.y + jumpHight) * Time.deltaTime);
@@ -85,11 +85,16 @@ public class GolemMinibossScript : MonoBehaviour {
 			rb.isKinematic = false;
 			currentAction = (int)Actions.SlamDown;
 			actionTime = Time.time;
+			moveToPoint = playerTM.position;
 		}
 	}
 
 	void SlamDown(){
-		currentAction = (int)Actions.Track;
-		actionTime = Time.time;
+		Transform tm = GetComponent<Transform> ();
+		tm.Translate ((moveToPoint - tm.position) * Time.deltaTime * slamDownSpeed);
+		if((tm.position-moveToPoint).magnitude < 1f){
+			currentAction = (int)Actions.Track;
+			actionTime = Time.time;
+		}
 	}
 }
