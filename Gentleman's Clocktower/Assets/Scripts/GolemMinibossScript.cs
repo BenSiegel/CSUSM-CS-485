@@ -92,10 +92,6 @@ public class GolemMinibossScript : MonoBehaviour {
 	void SlamDown(){
 		Transform tm = GetComponent<Transform> ();
 		tm.Translate ((moveToPoint - tm.position) * Time.deltaTime * slamDownSpeed);
-		if((tm.position-moveToPoint).magnitude < 1f){
-			currentAction = (int)Actions.Track;
-			actionTime = Time.time;
-		}
 	}
 
 	void takeDamage(){
@@ -109,6 +105,14 @@ public class GolemMinibossScript : MonoBehaviour {
 		if(collision.gameObject.tag.Equals("eDamage")){
 			takeDamage ();
 		}
+		if (((int)Actions.Charge == currentAction || (int)Actions.SlamDown == currentAction) 
+			&& collision.gameObject.name.Contains ("Briefcase")) {
+			DestroyObject (collision.gameObject);
+			if(currentAction == (int)Actions.SlamDown)
+				currentAction = (int)Actions.Track;
+		}
+		if((int)Actions.SlamDown == currentAction && collision.gameObject.tag.Equals("Ground"))
+			currentAction = (int)Actions.Track;
 	}
 
 	void OnTriggerEnter2D(Collider2D collision){
