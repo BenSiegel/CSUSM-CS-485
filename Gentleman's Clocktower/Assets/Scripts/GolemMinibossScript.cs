@@ -15,6 +15,7 @@ public class GolemMinibossScript : MonoBehaviour {
 	private Vector3 moveToPoint;
 	private float actionTime;
 	private bool chargeRight;
+	private GameObject[] arms;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class GolemMinibossScript : MonoBehaviour {
 		actionTime = Time.time;
 		chargeRight = false;
 		moveToPoint = Vector3.zero;
+
 	}
 	
 	// Update is called once per frame
