@@ -7,8 +7,9 @@ public class GolemMinibossScript : MonoBehaviour {
 	public float timeBetweenAttacks;
 	public float chargeSpeed;
 	public float chargeTime;
+	public float jumpHight;
 
-	enum Actions: int {Track=0, SlamUp, SlamDown, Charge};
+	enum Actions: int {Track=0, Jump, SlamDown, Charge};
 	public int currentAction;
 	private GameObject player;
 	private Vector3 moveToPoint;
@@ -19,7 +20,7 @@ public class GolemMinibossScript : MonoBehaviour {
 	void Start () {
 		currentAction = (int)Actions.Track;
 		player = GameObject.FindGameObjectWithTag("Player");
-		actionTime = Time.realtimeSinceStartup;
+		actionTime = Time.time;
 		chargeRight = false;
 		moveToPoint = Vector3.zero;
 	}
@@ -30,8 +31,8 @@ public class GolemMinibossScript : MonoBehaviour {
 		case((int)Actions.Track):
 			Track();
 			break;
-		case((int)Actions.SlamUp):
-			SlamUp ();
+		case((int)Actions.Jump):
+			Jump ();
 			break;
 		case((int)Actions.SlamDown):
 			SlamDown ();
@@ -55,7 +56,8 @@ public class GolemMinibossScript : MonoBehaviour {
 				else
 					chargeRight = false;
 			} else {
-				currentAction = (int)Actions.SlamUp;
+				currentAction = (int)Actions.Jump;
+				moveToPoint = playerTM.position;
 			}
 		}
 	}
@@ -72,11 +74,20 @@ public class GolemMinibossScript : MonoBehaviour {
 		}
 	}
 
-	void SlamUp(){
-		currentAction = (int)Actions.Track;
+	void Jump(){
+		Transform tm = GetComponent<Transform> ();
+		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
+		rb.isKinematic = true;
+		tm.Translate (new Vector3(0f, moveToPoint.y + jumpHight) * Time.deltaTime);
+		if (moveToPoint.y + jumpHight <= tm.position.y) {
+			rb.isKinematic = false;
+			currentAction = (int)Actions.SlamDown;
+			actionTime = Time.time;
+		}
 	}
 
 	void SlamDown(){
 		currentAction = (int)Actions.Track;
+		actionTime = Time.time;
 	}
 }
