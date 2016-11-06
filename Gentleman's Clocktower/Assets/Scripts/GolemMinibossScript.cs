@@ -97,4 +97,23 @@ public class GolemMinibossScript : MonoBehaviour {
 			actionTime = Time.time;
 		}
 	}
+
+	void takeDamage(){
+		health--;
+		if (health <= 0) {
+			DestroyObject (gameObject);
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D collision){
+		if(collision.gameObject.tag.Equals("eDamage")){
+			takeDamage ();
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collision){
+		if(collision.gameObject.tag.Equals("eDamage")){
+			takeDamage ();
+		}
+	}
 }
