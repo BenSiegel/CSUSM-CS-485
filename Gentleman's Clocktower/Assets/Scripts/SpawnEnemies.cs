@@ -42,6 +42,9 @@ public class SpawnEnemies : MonoBehaviour
 				Random.Range(min.z, max.z));
             //GameObject NewEnemy = (GameObject)Instantiate(enemy, pos, Quaternion.identity);
             spawnRate = Random.Range(1, 34);
+
+            //GameObject NewEnemy = (GameObject)Instantiate(enemyFlying1, pos, Quaternion.identity);
+            
             if (spawnRate >= 1 && spawnRate <= 6)
             {
                 GameObject NewEnemy = (GameObject)Instantiate(enemyFlying1, pos, Quaternion.identity);
@@ -62,6 +65,7 @@ public class SpawnEnemies : MonoBehaviour
             {
                 GameObject NewEnemy = (GameObject)Instantiate(enemyGround2, pos, Quaternion.identity);
             }
+            
         }
 	}
 }

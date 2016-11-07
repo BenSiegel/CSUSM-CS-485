@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour {
 		if(collision.gameObject.tag.Equals("eDamage"))
         {
             health--;
-            if (health == 0)
+            if (health <= 0)
             {
                 DeadAction();
             }
