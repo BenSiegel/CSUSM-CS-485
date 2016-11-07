@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
 			GetComponent<Rigidbody2D> ().isKinematic = true;
 			jumpToHight = transform.position.y + jump;
+			GetComponent<AudioSource>().Play ();
 			canJump = false;
 			isJumping = true;
         }

@@ -27,6 +27,7 @@ public class RangeAttack : MonoBehaviour {
             showGun();
             pointGun();
             fireGun();
+			GetComponent<AudioSource>().Play ();
 		}
 
 		if(Time.time - shownTime > disappearDelay)

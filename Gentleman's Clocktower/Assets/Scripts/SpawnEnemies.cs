@@ -26,6 +26,7 @@ public class SpawnEnemies : MonoBehaviour
 		max = ren.bounds.max;
         spawnRate = 0;
 		timeLastSpawn = Time.time;
+		GetComponent<AudioSource>().Play ();
 	}
 	
 	// Update is called once per frame

@@ -22,6 +22,7 @@ public class MeleeAttack : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown (0) && turning == false) {//left click
 			cane.transform.localScale = new Vector3 (1f,1f,1f);
+			GetComponent<AudioSource>().Play ();
 			turning = true;
 			spinTime = Time.time;
 			if (Input.mousePosition.x > Screen.width / 2) {
