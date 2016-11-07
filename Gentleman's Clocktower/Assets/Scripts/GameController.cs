@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public Text specialAmmoText;
     public GUIText restartText;
 	public Text bossHealth;
+	public Text deathText;
 
     // Use this for initialization
     void Start()
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour
         //specialAmmoText.text = "";
         ttimer = 0;
 		bossHealth.text = "";
+		deathText.text = "";
     }
 
     // Update is called once per frame
@@ -42,6 +44,14 @@ public class GameController : MonoBehaviour
 		if(FindObjectOfType(typeof(PlayerController)) != null){
 			player = (PlayerController)FindObjectOfType (typeof(PlayerController));
 			healthText.text = "Health: " + player.health;
+			if (player.health <= 0) {
+				healthText.text = "";
+				deathText.text = "You Died";
+				DestroyObject (player.gameObject.GetComponent<SpriteRenderer>());
+				DestroyObject (player.gameObject.GetComponent<PlayerController>());
+				DestroyObject (player.gameObject.GetComponent<Rigidbody2D>());
+				DestroyObject (player.gameObject.GetComponent<Collider2D>());
+			}
 		}else
 			healthText.text = "";
     }
