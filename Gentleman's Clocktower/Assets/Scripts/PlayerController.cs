@@ -9,17 +9,29 @@ public class PlayerController : MonoBehaviour
 	public int health;
 
     private Transform tm;
-    private bool canJump = true;
+    private bool canJump;
+	private bool isJumping;
+	private float jumpToHight;
 
     void Start()
     {
+		canJump = true;
+		isJumping = false;
 		health = 10;
 		tm = GetComponent<Transform>();
+		jumpToHight = 0f;
     }
 
     void Update()
     {
-        WASD();
+		if (isJumping) {
+			transform.Translate (new Vector3 (0f, 1f) * Time.deltaTime * speed);
+			if (transform.position.y >= jumpToHight) {
+				GetComponent<Rigidbody2D> ().isKinematic = false;
+				isJumping = false;
+			}
+		}
+		WASD();
     }
 
     void WASD()
@@ -36,8 +48,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && canJump)
         {
-            transform.Translate(Vector3.up * jump * Time.deltaTime);
-            canJump = false;
+			GetComponent<Rigidbody2D> ().isKinematic = true;
+			jumpToHight = transform.position.y + jump;
+			canJump = false;
+			isJumping = true;
         }
     }
 
