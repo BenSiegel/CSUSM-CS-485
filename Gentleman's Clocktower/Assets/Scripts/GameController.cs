@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public Text timerText;
     public Text specialAmmoText;
     public GUIText restartText;
+	public Text bossHealth;
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,7 @@ public class GameController : MonoBehaviour
         timerText.text = "";
         //specialAmmoText.text = "";
         ttimer = 0;
+		bossHealth.text = "";
     }
 
     // Update is called once per frame
@@ -30,5 +32,11 @@ public class GameController : MonoBehaviour
     {
         ttimer = (int)Time.time;
         timerText.text = "Timer: " + ttimer;
+		GolemMinibossScript golem;
+		if(FindObjectOfType(typeof(GolemMinibossScript)) != null){
+			golem = (GolemMinibossScript)FindObjectOfType (typeof(GolemMinibossScript));
+			bossHealth.text = "Golem Health: " + golem.health;
+		}else
+			bossHealth.text = "";
     }
 }
