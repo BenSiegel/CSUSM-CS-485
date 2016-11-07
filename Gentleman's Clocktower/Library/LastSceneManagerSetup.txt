@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/_Scenes/Gentleman's Clocktower.unity
-  isLoaded: 1
-  isActive: 1
