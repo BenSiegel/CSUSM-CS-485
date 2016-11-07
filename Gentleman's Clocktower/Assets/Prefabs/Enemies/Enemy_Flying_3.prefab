@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 114000013181682500}
   m_Layer: 0
   m_Name: Enemy_Flying_3
-  m_TagString: Enemy
+  m_TagString: EFly3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

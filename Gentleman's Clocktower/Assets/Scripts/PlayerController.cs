@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump;
 	public int health;
+    public int EFly1;
+    public int Efly2;
+    public int Efly3;
+    public int EGround1;
+    public int EGround2;
 
     private Transform tm;
     private bool canJump;
@@ -17,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
 		canJump = true;
 		isJumping = false;
-		health = 10;
+		//health = 10;
 		tm = GetComponent<Transform>();
 		jumpToHight = 0f;
     }
@@ -60,15 +65,15 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag.Equals("Ground"))
             canJump = true;
         if (col.gameObject.tag.Equals("EFly1"))
-            health-=2;
+            health-=EFly1;
         if (col.gameObject.tag.Equals("EFly2"))
-            health-=4;
+            health-=Efly2;
         if (col.gameObject.tag.Equals("EFly3"))
-            health-=4;
+            health-=Efly3;
         if (col.gameObject.tag.Equals("EGround1"))
-            health-=1;
+            health-=EGround1;
         if (col.gameObject.tag.Equals("EGround2"))
-            health-=2;
+            health-=EGround2;
     }
      
 }

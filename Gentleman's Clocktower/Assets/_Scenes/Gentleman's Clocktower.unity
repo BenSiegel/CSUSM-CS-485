@@ -1310,7 +1310,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jump: 2
-  health: 10
+  health: 100
+  EFly1: 2
+  Efly2: 4
+  Efly3: 3
+  EGround1: 1
+  EGround2: 2
 --- !u!212 &1610355641
 SpriteRenderer:
   m_ObjectHideFlags: 0
