@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     {
         restart = true;
         gameOver = false;
-        //healthText.text = "";
+        healthText.text = "";
         timerText.text = "";
         //specialAmmoText.text = "";
         ttimer = 0;
@@ -33,10 +33,16 @@ public class GameController : MonoBehaviour
         ttimer = (int)Time.time;
         timerText.text = "Timer: " + ttimer;
 		GolemMinibossScript golem;
+		PlayerController player;
 		if(FindObjectOfType(typeof(GolemMinibossScript)) != null){
 			golem = (GolemMinibossScript)FindObjectOfType (typeof(GolemMinibossScript));
 			bossHealth.text = "Golem Health: " + golem.health;
 		}else
 			bossHealth.text = "";
+		if(FindObjectOfType(typeof(PlayerController)) != null){
+			player = (PlayerController)FindObjectOfType (typeof(PlayerController));
+			healthText.text = "Health: " + player.health;
+		}else
+			healthText.text = "";
     }
 }
