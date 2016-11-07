@@ -56,10 +56,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && canJump)
         {
-            GetComponent<Rigidbody2D>().isKinematic = true;
-            jumpToHight = transform.position.y + jump;
-            canJump = false;
-            isJumping = true;
+			GetComponent<Rigidbody2D> ().isKinematic = true;
+			jumpToHight = transform.position.y + jump;
+			GetComponent<AudioSource>().Play ();
+			canJump = false;
+			isJumping = true;
         }
     }
 

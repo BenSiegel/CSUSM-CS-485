@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour {
 		Transform tm = GetComponent<Transform> ();
 		Vector3 pos = new Vector3 (tm.position.x, tm.position.y, tm.position.z);
 		GameObject briefcaseNew = (GameObject) Instantiate(briefcase, pos, Quaternion.identity);
-
+		GetComponent<AudioSource>().Play ();
         DestroyObject(gameObject,0f);
 	}
 

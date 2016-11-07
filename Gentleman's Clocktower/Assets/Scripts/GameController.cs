@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
 			if (player.health <= 0) {
 				healthText.text = "";
 				deathText.text = "You Died";
+				GetComponent<AudioSource>().Play ();
 				DestroyObject (player.gameObject.GetComponent<SpriteRenderer>());
 				DestroyObject (player.gameObject.GetComponent<PlayerController>());
 				DestroyObject (player.gameObject.GetComponent<Rigidbody2D>());
