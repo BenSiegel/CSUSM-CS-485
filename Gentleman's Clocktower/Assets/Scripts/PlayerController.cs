@@ -6,37 +6,40 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float jump;
-	public int health;
-    public int EFly1;
-    public int Efly2;
-    public int Efly3;
-    public int EGround1;
-    public int EGround2;
+    public int health;
+    public int EFly1Attack;
+    public int EFly2Attack;
+    public int EFly3Attack;
+    public int EGround1Attack;
+    public int EGround2Attack;
+    public int MiniBossAttack;
 
     private Transform tm;
     private bool canJump;
-	private bool isJumping;
-	private float jumpToHight;
+    private bool isJumping;
+    private float jumpToHight;
 
     void Start()
     {
-		canJump = true;
-		isJumping = false;
-		//health = 10;
-		tm = GetComponent<Transform>();
-		jumpToHight = 0f;
+        canJump = true;
+        isJumping = false;
+        //health = 10;
+        tm = GetComponent<Transform>();
+        jumpToHight = 0f;
     }
 
     void Update()
     {
-		if (isJumping) {
-			transform.Translate (new Vector3 (0f, 1f) * Time.deltaTime * speed);
-			if (transform.position.y >= jumpToHight) {
-				GetComponent<Rigidbody2D> ().isKinematic = false;
-				isJumping = false;
-			}
-		}
-		WASD();
+        if (isJumping)
+        {
+            transform.Translate(new Vector3(0f, 1f) * Time.deltaTime * speed);
+            if (transform.position.y >= jumpToHight)
+            {
+                GetComponent<Rigidbody2D>().isKinematic = false;
+                isJumping = false;
+            }
+        }
+        WASD();
     }
 
     void WASD()
@@ -53,10 +56,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && canJump)
         {
-			GetComponent<Rigidbody2D> ().isKinematic = true;
-			jumpToHight = transform.position.y + jump;
-			canJump = false;
-			isJumping = true;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+            jumpToHight = transform.position.y + jump;
+            canJump = false;
+            isJumping = true;
         }
     }
 
@@ -65,15 +68,17 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag.Equals("Ground"))
             canJump = true;
         if (col.gameObject.tag.Equals("EFly1"))
-            health-=EFly1;
+            health -= EFly1Attack;
         if (col.gameObject.tag.Equals("EFly2"))
-            health-=Efly2;
+            health -= EFly2Attack;
         if (col.gameObject.tag.Equals("EFly3"))
-            health-=Efly3;
+            health -= EFly3Attack;
         if (col.gameObject.tag.Equals("EGround1"))
-            health-=EGround1;
+            health -= EGround1Attack;
         if (col.gameObject.tag.Equals("EGround2"))
-            health-=EGround2;
+            health -= EGround2Attack;
+        if (col.gameObject.tag.Equals("miniboss"))
+            health -= MiniBossAttack;
     }
-     
+
 }

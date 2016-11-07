@@ -5,12 +5,12 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject briefcase;
     public GameObject meleeWeaponA;
-    public GameObject meleeWeaponB;
-    public GameObject meleeWeaponC;
+    //public GameObject meleeWeaponB;
+    //public GameObject meleeWeaponC;
 
     public GameObject rangeWeaponA;
-    public GameObject rangeWeaponB;
-    public GameObject rangeWeaponC;
+    //public GameObject rangeWeaponB;
+    //public GameObject rangeWeaponC;
 
 
     public int health;
@@ -117,18 +117,24 @@ public class EnemyController : MonoBehaviour {
         Vector3 pos = new Vector3(tm.position.x, tm.position.y, tm.position.z);
 
         var chanceForSpecWep = Random.Range(1, 100);
-        if (chanceForSpecWep >= 1 && chanceForSpecWep <= 25)
+        if (chanceForSpecWep >= 1 && chanceForSpecWep <= 50)
         {
             var specialWeaponSpawn = Random.Range(1, 100);
-            if (specialWeaponSpawn >= 1 && specialWeaponSpawn <= 50)
+            if (specialWeaponSpawn >= 1 && specialWeaponSpawn <= 100)
             {
                 var smSpawn = Random.Range(1, 100);
 
+                if (smSpawn >= 1 && smSpawn <= 100)
+                {
+                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
+                }
+                
+                /*
                 if (smSpawn >= 1 && smSpawn <= 50)
                 {
                     GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
                 }
-
+                
                 else if (smSpawn >= 51 && smSpawn <= 81)
                 {
                     GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponB, pos, Quaternion.identity);
@@ -137,18 +143,23 @@ public class EnemyController : MonoBehaviour {
                 else if (smSpawn >= 82 && smSpawn <= 100)
                 {
                     GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponC, pos, Quaternion.identity);
-                }
+                }*/
             }
 
             else if (specialWeaponSpawn >= 51 && specialWeaponSpawn <= 100)
             {
-                var srSpawn = Random.Range(0, 100);
+                var srSpawn = Random.Range(1, 100);
 
+                if(srSpawn >= 1 && srSpawn <= 100)
+                {
+                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
+                }
+                /*
                 if (srSpawn >= 0 && srSpawn <= 50)
                 {
                     GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
                 }
-
+                
                 else if (srSpawn >= 51 && srSpawn <= 81)
                 {
                     GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponB, pos, Quaternion.identity);
@@ -157,7 +168,7 @@ public class EnemyController : MonoBehaviour {
                 else if (srSpawn >= 82 && srSpawn <= 100)
                 {
                     GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponC, pos, Quaternion.identity);
-                }
+                }*/
             }
         }
     }

@@ -1311,11 +1311,12 @@ MonoBehaviour:
   speed: 10
   jump: 2
   health: 100
-  EFly1: 2
-  Efly2: 4
-  Efly3: 3
-  EGround1: 1
-  EGround2: 2
+  EFly1Attack: 2
+  EFly2Attack: 4
+  EFly3Attack: 3
+  EGround1Attack: 1
+  EGround2Attack: 2
+  MiniBossAttack: 10
 --- !u!212 &1610355641
 SpriteRenderer:
   m_ObjectHideFlags: 0
