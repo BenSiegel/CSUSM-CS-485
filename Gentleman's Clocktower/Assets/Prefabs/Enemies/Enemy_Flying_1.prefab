@@ -24,7 +24,7 @@ GameObject:
   - 61: {fileID: 61000012019011668}
   - 114: {fileID: 114000010004400114}
   - 82: {fileID: 82000012073557804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Flying_1
   m_TagString: EFly1
   m_Icon: {fileID: 0}
@@ -163,15 +163,7 @@ MonoBehaviour:
   briefcase: {fileID: 1000013463707256, guid: 8243b9cbd36e22844a717a2450614708, type: 2}
   meleeWeaponA: {fileID: 1000012429285450, guid: 174a1aa04675480468e11ce5d994e13e,
     type: 2}
-  meleeWeaponB: {fileID: 1000013246595316, guid: eff77784f1e16b6448ad7e0f42ca228b,
-    type: 2}
-  meleeWeaponC: {fileID: 1000010824204596, guid: c6d968c0de712524891867f7151525ad,
-    type: 2}
   rangeWeaponA: {fileID: 1000012443592668, guid: e50042c3d2b74f94ab5ea90a2ac18590,
-    type: 2}
-  rangeWeaponB: {fileID: 1000013928724536, guid: 0584c08a914c2354f9a022e76c5f8f3a,
-    type: 2}
-  rangeWeaponC: {fileID: 1000012479714506, guid: 255cf0b85e3c74b4d910ac9c38d9982d,
     type: 2}
   health: 1
   damage: 1
