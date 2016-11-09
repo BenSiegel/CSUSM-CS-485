@@ -19,6 +19,12 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
     private float jumpToHight;
 
+    Animator anim;
+    Rigidbody2D rb;
+    SpriteRenderer sr;
+
+    float someScale;
+
     void Start()
     {
         canJump = true;
@@ -26,6 +32,11 @@ public class PlayerController : MonoBehaviour
         //health = 10;
         tm = GetComponent<Transform>();
         jumpToHight = 0f;
+
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        someScale = transform.localScale.x;
     }
 
     void Update()
@@ -35,7 +46,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate(new Vector3(0f, 1f) * Time.deltaTime * speed);
             if (transform.position.y >= jumpToHight)
             {
-                GetComponent<Rigidbody2D>().isKinematic = false;
+                rb.isKinematic = false;
                 isJumping = false;
             }
         }
@@ -44,14 +55,19 @@ public class PlayerController : MonoBehaviour
 
     void WASD()
     {
+        anim.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
+            //sr.transform.localScale = new Vector2(-someScale, transform.localScale.y);
+            sr.flipX = true;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+            //sr.transform.localScale = new Vector2(someScale, transform.localScale.y);
+            sr.flipX = false;
         }
 
         if (Input.GetKey(KeyCode.W) && canJump)
@@ -67,7 +83,13 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag.Equals("Ground"))
+        {
             canJump = true;
+            anim.SetBool("Jumping", false);
+        } else
+        {
+            anim.SetBool("Jumping", true);
+        }
         if (col.gameObject.tag.Equals("EFly1"))
             health -= EFly1Attack;
         if (col.gameObject.tag.Equals("EFly2"))

@@ -1586,7 +1586,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: cadb12f45d367b24c91a87461d220e7e, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: cadb12f45d367b24c91a87461d220e7e, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -1925,7 +1926,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051378774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 322ae66052eb0234f93191a08f3c9879, type: 3}
   m_Name: 
