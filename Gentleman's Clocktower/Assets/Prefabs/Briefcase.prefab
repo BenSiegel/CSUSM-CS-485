@@ -21,9 +21,9 @@ GameObject:
   - 4: {fileID: 4000012963508082}
   - 50: {fileID: 50000011183700880}
   - 61: {fileID: 61000010552817570}
-  - 61: {fileID: 61000013028289680}
   - 61: {fileID: 61000012245811194}
   - 212: {fileID: 212000012267126618}
+  - 114: {fileID: 114000012945099010}
   m_Layer: 11
   m_Name: Briefcase
   m_TagString: Ground
@@ -89,20 +89,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Size: {x: 3, y: 1.85}
---- !u!61 &61000013028289680
-BoxCollider2D:
+--- !u!114 &114000012945099010
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013463707256}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 2.3}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d29cb6f474369438709b7b51bf06b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000012267126618
 SpriteRenderer:
   m_ObjectHideFlags: 1
