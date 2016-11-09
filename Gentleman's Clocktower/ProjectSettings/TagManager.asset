@@ -9,6 +9,11 @@ TagManager:
   - Ground
   - SpecialWeapons
   - miniboss
+  - EGround1
+  - EGround2
+  - EFly3
+  - EFly2
+  - EFly1
   layers:
   - Default
   - TransparentFX
@@ -21,7 +26,7 @@ TagManager:
   - Player
   - Enemies
   - SpecialWeapons
-  - 
+  - Ground
   - 
   - 
   - 
