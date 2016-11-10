@@ -25,29 +25,60 @@ public class EnemyController : MonoBehaviour {
 	private GameObject player;
 	private Vector3 movePoint;
     private int randChance;
+	private enum EnemyTypes: int{Fly, Ground};
+	private int type;
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
 		player = GameObject.FindGameObjectWithTag("Player");
         randChance = 0;
+		if (tag.Contains ("Fly"))
+			type = (int)EnemyTypes.Fly;
+		else
+			type = (int)EnemyTypes.Ground;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		switch (currentState) {
-			case (int)Actions.Track:
-				Track ();
-				break;
-			case (int)Actions.Dive:
-				Dive ();
-				break;
-			case (int)Actions.Float:
-				Float ();
-				break;
+		switch (type) {
+		case (int) EnemyTypes.Fly:
+			FlyingUpdate ();
+			break;
+		case (int) EnemyTypes.Ground:
+			GroundUpdate();
+			break;
 		}
 	}
 
-	void Track()
+	void GroundUpdate(){
+		switch (currentState) {
+		case (int)Actions.Track:
+			GroundTrack ();
+			break;
+		}
+	}
+
+	void FlyingUpdate(){
+		switch (currentState) {
+		case (int)Actions.Track:
+			FlyingTrack ();
+			break;
+		case (int)Actions.Dive:
+			Dive ();
+			break;
+		case (int)Actions.Float:
+			Float ();
+			break;
+		}
+	}
+
+	void GroundTrack(){
+		Transform tm = GetComponent<Transform> ();
+		Transform playerTM = player.GetComponent<Transform> ();
+		tm.Translate ((playerTM.position - tm.position) * Time.deltaTime * speed);
+	}
+
+	void FlyingTrack()
     {
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
