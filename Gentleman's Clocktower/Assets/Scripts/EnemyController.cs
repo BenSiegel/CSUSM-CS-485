@@ -89,11 +89,11 @@ public class EnemyController : MonoBehaviour {
 
 	void Jump(){
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate (new Vector3(tm.position.x, jumpHeight) * Time.deltaTime*speed);
-		if (tm.position.y >= jumpHeight) {
+		tm.Translate (new Vector3(0f, -jumpHeight,0f) * Time.deltaTime*speed);
+		//if (tm.position.y >= jumpHeight) {
 			GetComponent<Rigidbody2D> ().isKinematic = false;
 			currentState = (int)Actions.Track;
-		}
+		//}
 	}
 
 	void FlyingTrack()
