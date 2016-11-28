@@ -370,6 +370,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnField
       objectReference: {fileID: 0}
+    - target: {fileID: 82000013954147096, guid: aa136b79a4937754c9be99e7488e6b23,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013541322968, guid: aa136b79a4937754c9be99e7488e6b23,
         type: 2}
       propertyPath: timeBetweenSpawns
@@ -423,6 +428,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010894692074, guid: 19411afc65fd8144f89097deb8430747, type: 2}
       propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000010798756972, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: Priority
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000010798756972, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000012973991796, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: Priority
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000012973991796, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000010358924212, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: Priority
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000010358924212, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
