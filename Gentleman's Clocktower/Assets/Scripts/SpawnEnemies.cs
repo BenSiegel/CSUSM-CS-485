@@ -37,11 +37,15 @@ public class SpawnEnemies : MonoBehaviour
          */
         if (Time.time - timeLastSpawn > timeBetweenSpawns) {
 			timeLastSpawn = Time.time;
-			Vector3 pos = new Vector3 (
+			Vector2 pos = new Vector2 (
 				Random.Range(min.x, max.x),
-				Random.Range(min.y, max.y),
-				Random.Range(min.z, max.z));
-            //GameObject NewEnemy = (GameObject)Instantiate(enemy, pos, Quaternion.identity);
+				Random.Range(min.y, max.y));
+			while (Physics.OverlapSphere (pos, 1).Length > 0) {
+				pos = new Vector2 (
+					Random.Range(min.x, max.x),
+					Random.Range(min.y, max.y));
+			}
+			//GameObject NewEnemy = (GameObject)Instantiate(enemy, pos, Quaternion.identity);
             spawnRate = Random.Range(1, 34);
 
             //GameObject NewEnemy = (GameObject)Instantiate(enemyFlying1, pos, Quaternion.identity);

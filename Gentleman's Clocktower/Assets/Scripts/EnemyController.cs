@@ -20,34 +20,83 @@ public class EnemyController : MonoBehaviour {
 
 	public float diveDistence;
 
-	enum Actions: int {Track=0, Dive, Float};
+	enum Actions: int {Track=0, Dive, Float, Jump};
 	private int currentState;
 	private GameObject player;
 	private Vector3 movePoint;
     private int randChance;
+	private enum EnemyTypes: int{Fly, Ground};
+	private int type;
+	private float jumpHeight;
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
 		player = GameObject.FindGameObjectWithTag("Player");
         randChance = 0;
+		if (tag.Contains ("Fly"))
+			type = (int)EnemyTypes.Fly;
+		else
+			type = (int)EnemyTypes.Ground;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		switch (currentState) {
-			case (int)Actions.Track:
-				Track ();
-				break;
-			case (int)Actions.Dive:
-				Dive ();
-				break;
-			case (int)Actions.Float:
-				Float ();
-				break;
+		switch (type) {
+		case (int) EnemyTypes.Fly:
+			FlyingUpdate ();
+			break;
+		case (int) EnemyTypes.Ground:
+			GroundUpdate();
+			break;
 		}
 	}
 
-	void Track()
+	void GroundUpdate(){
+		switch (currentState) {
+		case (int)Actions.Track:
+			GroundTrack ();
+			break;
+		case (int)Actions.Jump:
+			Jump ();
+			break;
+		}
+	}
+
+	void FlyingUpdate(){
+		switch (currentState) {
+		case (int)Actions.Track:
+			FlyingTrack ();
+			break;
+		case (int)Actions.Dive:
+			Dive ();
+			break;
+		case (int)Actions.Float:
+			Float ();
+			break;
+		}
+	}
+
+	void GroundTrack(){
+		Transform tm = GetComponent<Transform> ();
+		Transform playerTM = player.GetComponent<Transform> ();
+		tm.Translate (new Vector3(playerTM.position.x - tm.position.x, 0f) * Time.deltaTime * speed);
+		if (playerTM.position.y > tm.position.y + 1) {
+			GetComponent<Rigidbody2D> ().isKinematic = true;
+			currentState = (int)Actions.Jump;
+			jumpHeight = tm.position.y + 2;
+		}
+	}
+
+	void Jump(){
+		Transform tm = GetComponent<Transform> ();
+		tm.Translate (new Vector3(tm.position.x, jumpHeight) * Time.deltaTime*speed);
+		if (tm.position.y >= jumpHeight) {
+			GetComponent<Rigidbody2D> ().isKinematic = false;
+			currentState = (int)Actions.Track;
+		}
+	}
+
+	void FlyingTrack()
     {
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
