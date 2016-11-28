@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GolemMinibossScript.cs" />
      <Compile Include="Assets\Scripts\LevelReset.cs" />
+     <Compile Include="Assets\Scripts\LoadNextLevelScript.cs" />
      <Compile Include="Assets\Scripts\MeleeAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\RangeAttack.cs" />
