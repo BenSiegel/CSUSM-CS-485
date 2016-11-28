@@ -380,6 +380,11 @@ Prefab:
       propertyPath: timeBetweenSpawns
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82000013954147096, guid: aa136b79a4937754c9be99e7488e6b23,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa136b79a4937754c9be99e7488e6b23, type: 2}
   m_IsPrefabParent: 0
