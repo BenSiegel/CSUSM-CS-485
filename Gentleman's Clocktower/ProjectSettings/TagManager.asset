@@ -14,6 +14,8 @@ TagManager:
   - EFly3
   - EFly2
   - EFly1
+  - Crush
+  - Crush1
   layers:
   - Default
   - TransparentFX

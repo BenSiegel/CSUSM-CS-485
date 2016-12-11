@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletDistory.cs" />
      <Compile Include="Assets\Scripts\ColliderPlatformScript.cs" />
+     <Compile Include="Assets\Scripts\CrushScript.cs" />
+     <Compile Include="Assets\Scripts\CrusherControler.cs" />
      <Compile Include="Assets\Scripts\EndGameControl.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />

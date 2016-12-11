@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private bool canJump;
     private bool isJumping;
     private float jumpToHight;
+	private bool wall1;
+	private bool wall2;
 
     Animator anim;
     Rigidbody2D rb;
@@ -29,7 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         canJump = true;
         isJumping = false;
-        //health = 10;
+		wall1 = false;
+		wall2 = false;
+
         tm = GetComponent<Transform>();
         jumpToHight = 0f;
 
@@ -50,6 +54,8 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
             }
         }
+		if (wall1 && wall2)//crushed in trap
+			health = 0;
         WASD();
     }
 
@@ -102,6 +108,20 @@ public class PlayerController : MonoBehaviour
             health -= EGround2Attack;
         if (col.gameObject.tag.Equals("miniboss"))
             health -= MiniBossAttack;
+		if (col.transform.tag == "Crush"){
+			wall1 = true;
+		}
+		else if(col.transform.tag == "Crush1"){
+			wall2 = true;
+		}
     }
 
+	void OnCollisionExit2D(Collision2D col)
+	{
+		if (col.transform.tag == "Crush"){
+			wall1 = false;
+		}else if(col.transform.tag == "Crush1"){
+			wall2 = false;
+		}
+	}
 }
