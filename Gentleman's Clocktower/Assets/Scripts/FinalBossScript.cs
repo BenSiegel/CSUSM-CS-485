@@ -14,10 +14,13 @@ public class FinalBossScript : MonoBehaviour {
 
 	private int actionCount;
 	private Transform tf;
+	private int laserAngle = 0;
+	private LineRenderer line;
 
 	void Start () {
 		actionCount = 0;
 		tf = GetComponent<Transform> ();
+		line = GetComponent<LineRenderer> ();
 	}
 
 	void Update () {
@@ -83,7 +86,28 @@ public class FinalBossScript : MonoBehaviour {
 	}
 
 	bool Laser(){
-		return true;
+		//charge up time here if needed later
+		line.enabled = true;
+		Vector2 origin;
+		Vector2 direction = new Vector2(0.1f,-1f);
+		if (tf.position.x < 0) {
+			origin = new Vector2 (tf.position.x + 5f, tf.position.y);
+		} else {
+			origin = new Vector2 (tf.position.x - 5f, tf.position.y);
+		}
+		RaycastHit2D hit = Physics2D.Raycast (origin, Quaternion.AngleAxis(laserAngle, Vector2.up)*direction);//change tf positioning to the head
+		int value = 5;
+		Vector3[] pos = {origin, hit.point };
+		line.SetPositions (pos);
+		Debug.Log(Quaternion.AngleAxis(laserAngle, Vector2.up)*direction);
+		Debug.Log("Hit: " + hit.point + " Angle: " + laserAngle);
+		laserAngle++;
+		if (laserAngle == 360) {
+			laserAngle = 0;
+			line.enabled = false;
+			return true;
+		} else
+			return false;
 	}
 
 	bool Summon(){
