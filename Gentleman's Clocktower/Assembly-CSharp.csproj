@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\CrusherControler.cs" />
      <Compile Include="Assets\Scripts\EndGameControl.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\FinalBossScript.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GolemMinibossScript.cs" />
      <Compile Include="Assets\Scripts\LevelReset.cs" />
