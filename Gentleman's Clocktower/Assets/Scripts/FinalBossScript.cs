@@ -7,6 +7,7 @@ public class FinalBossScript : MonoBehaviour {
 	public float speed;
 	public float laserSpeed;
 	public Vector2 headPos;
+	public int bossLaserDamage;
 
 	public GameObject movePoint1;
 	public GameObject movePoint2;
@@ -101,6 +102,11 @@ public class FinalBossScript : MonoBehaviour {
 		}
 		Vector2 direction = new Vector2 (Mathf.Cos(Mathf.PI*value), Mathf.Sin(Mathf.PI*value));
 		RaycastHit2D hit = Physics2D.Raycast (origin, direction);
+		if (hit.collider.gameObject.tag.Equals ("Player")) {
+			laserAngle = 2f;
+			PlayerController player = hit.collider.gameObject.GetComponent<PlayerController>();
+			player.health -= bossLaserDamage;
+		}
 		Vector3[] pos = {origin, hit.point};
 		line.SetPositions (pos);
 		laserAngle += laserSpeed;

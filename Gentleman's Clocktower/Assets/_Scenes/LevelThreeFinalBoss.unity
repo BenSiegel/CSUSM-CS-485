@@ -171,6 +171,7 @@ MonoBehaviour:
   speed: 10
   laserSpeed: 0.01
   headPos: {x: 5, y: 0}
+  bossLaserDamage: 10
   movePoint1: {fileID: 252828530}
   movePoint2: {fileID: 346122736}
   movePoint3: {fileID: 1393862720}
