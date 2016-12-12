@@ -6,6 +6,7 @@ public class FinalBossScript : MonoBehaviour {
 	public int health;
 	public float speed;
 	public float laserSpeed;
+	public float laserMaxAngle;
 	public Vector2 headPos;
 	public int bossLaserDamage;
 
@@ -110,7 +111,7 @@ public class FinalBossScript : MonoBehaviour {
 		Vector3[] pos = {origin, hit.point};
 		line.SetPositions (pos);
 		laserAngle += laserSpeed;
-		if (laserAngle > 0.5f) {
+		if (laserAngle > laserMaxAngle) {
 			laserAngle = 0f;
 			line.enabled = false;
 			return true;

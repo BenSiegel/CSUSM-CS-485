@@ -170,6 +170,7 @@ MonoBehaviour:
   health: 0
   speed: 10
   laserSpeed: 0.01
+  laserMaxAngle: 0.38
   headPos: {x: 5, y: 0}
   bossLaserDamage: 10
   movePoint1: {fileID: 252828530}
