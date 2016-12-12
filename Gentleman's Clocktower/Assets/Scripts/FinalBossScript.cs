@@ -12,7 +12,6 @@ public class FinalBossScript : MonoBehaviour {
 	public GameObject movePoint4;
 	public GameObject movePoint5;
 
-	enum Actions: int {Float, Slam, Laser, Summon};
 	private int actionCount;
 	private Transform tf;
 
@@ -24,41 +23,54 @@ public class FinalBossScript : MonoBehaviour {
 	void Update () {
 		switch(actionCount){
 		case 0:
-			if (MoveTo (movePoint1))
+			if (Summon ())
 				actionCount++;
 			break;
 		case 1:
-			if (MoveTo (movePoint2))
+			if (MoveTo(movePoint1))
 				actionCount++;
 			break;
 		case 2:
-			if (MoveTo (movePoint1))
+			if (MoveTo(movePoint2))
 				actionCount++;
 			break;
 		case 3:
-			if (MoveTo (movePoint3))
+			if (Laser())
 				actionCount++;
 			break;
 		case 4:
-			if (MoveTo (movePoint4))
+			if (MoveTo(movePoint1))
 				actionCount++;
 			break;
 		case 5:
-			if (MoveTo (movePoint5))
+			if (MoveTo(movePoint3))
 				actionCount++;
 			break;
 		case 6:
-			if (MoveTo (movePoint4))
+			if (MoveTo(movePoint4))
 				actionCount++;
 			break;
 		case 7:
-			if (MoveTo (movePoint3))
+			if (MoveTo(movePoint5))
+				actionCount++;
+			break;
+		case 8:
+			if (Laser())
+				actionCount++;
+			break;
+		case 9:
+			if (MoveTo(movePoint4))
+				actionCount++;
+			break;
+		case 10:
+			if (MoveTo(movePoint3))
 				actionCount++;
 			break;
 		default:
 			actionCount = 0;
 			break;
 		}
+
 	}
 
 	bool MoveTo(GameObject point){
@@ -68,5 +80,13 @@ public class FinalBossScript : MonoBehaviour {
 			return true;
 		else
 			return false;
+	}
+
+	bool Laser(){
+		return true;
+	}
+
+	bool Summon(){
+		return true;
 	}
 }
