@@ -9,6 +9,8 @@ public class FinalBossScript : MonoBehaviour {
 	public float laserMaxAngle;
 	public Vector2 headPos;
 	public int bossLaserDamage;
+	public int numberOfEnemiesToSummon;
+	public float timeBetweenSpawn;
 
 	public GameObject movePoint1;
 	public GameObject movePoint2;
@@ -16,16 +18,23 @@ public class FinalBossScript : MonoBehaviour {
 	public GameObject movePoint4;
 	public GameObject movePoint5;
 
+	public GameObject flyingEnemy;
+	public GameObject groundEnemy;
+
 	private int actionCount;
 	private Transform tf;
 	private float laserAngle = 0f;
 	private LineRenderer line;
+	private float spawnTime;
+	private int currentSpawn;
 
 	void Start () {
 		actionCount = 0;
 		tf = GetComponent<Transform> ();
 		line = GetComponent<LineRenderer> ();
 		line.enabled = false;
+		spawnTime = Time.time;
+		currentSpawn = 0;
 	}
 
 	void Update () {
@@ -120,6 +129,21 @@ public class FinalBossScript : MonoBehaviour {
 	}
 
 	bool Summon(){
-		return true;
+		if (Time.time - spawnTime >= timeBetweenSpawn) {
+			spawnTime = Time.time;
+			currentSpawn++;
+			if (Mathf.CeilToInt (Random.Range (0, 2)) == 1) {
+				GameObject newEnemy = (GameObject)Instantiate (flyingEnemy, tf.position, Quaternion.identity);
+			} else {
+				GameObject newEnemy = (GameObject)Instantiate (groundEnemy, tf.position, Quaternion.identity);
+			}
+		}
+
+		if (currentSpawn < numberOfEnemiesToSummon) {
+			return false;
+		} else {
+			currentSpawn = 0;
+			return true;
+		}
 	}
 }

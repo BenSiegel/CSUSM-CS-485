@@ -173,11 +173,17 @@ MonoBehaviour:
   laserMaxAngle: 0.38
   headPos: {x: 5, y: 0}
   bossLaserDamage: 10
+  numberOfEnemiesToSummon: 3
+  timeBetweenSpawn: 0.5
   movePoint1: {fileID: 252828530}
   movePoint2: {fileID: 346122736}
   movePoint3: {fileID: 1393862720}
   movePoint4: {fileID: 1806977022}
   movePoint5: {fileID: 540500893}
+  flyingEnemy: {fileID: 1000013377641074, guid: 117b1692b5df8ef46a1d06501a92a2b3,
+    type: 2}
+  groundEnemy: {fileID: 1000010597397674, guid: ea031c3481640dc4182e3c0d4f9265f1,
+    type: 2}
 --- !u!61 &217562430
 BoxCollider2D:
   m_ObjectHideFlags: 0
