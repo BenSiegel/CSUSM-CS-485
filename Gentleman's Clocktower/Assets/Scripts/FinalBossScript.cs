@@ -5,6 +5,8 @@ public class FinalBossScript : MonoBehaviour {
 
 	public int health;
 	public float speed;
+	public float laserSpeed;
+	public Vector2 headPos;
 
 	public GameObject movePoint1;
 	public GameObject movePoint2;
@@ -14,13 +16,14 @@ public class FinalBossScript : MonoBehaviour {
 
 	private int actionCount;
 	private Transform tf;
-	private int laserAngle = 0;
+	private float laserAngle = 0f;
 	private LineRenderer line;
 
 	void Start () {
 		actionCount = 0;
 		tf = GetComponent<Transform> ();
 		line = GetComponent<LineRenderer> ();
+		line.enabled = false;
 	}
 
 	void Update () {
@@ -86,24 +89,23 @@ public class FinalBossScript : MonoBehaviour {
 	}
 
 	bool Laser(){
-		//charge up time here if needed later
 		line.enabled = true;
 		Vector2 origin;
-		Vector2 direction = new Vector2(0.1f,-1f);
-		if (tf.position.x < 0) {
-			origin = new Vector2 (tf.position.x + 5f, tf.position.y);
+		float value;
+		if (tf.position.x < 0f) {
+			origin = new Vector2 (tf.position.x + headPos.x, tf.position.y+headPos.y);//set to head position
+			value = laserAngle+1.5f;
 		} else {
-			origin = new Vector2 (tf.position.x - 5f, tf.position.y);
+			origin = new Vector2 (tf.position.x - headPos.x, tf.position.y+headPos.y);//set to head position
+			value = 1.5f - laserAngle;
 		}
-		RaycastHit2D hit = Physics2D.Raycast (origin, Quaternion.AngleAxis(laserAngle, Vector2.up)*direction);//change tf positioning to the head
-		int value = 5;
-		Vector3[] pos = {origin, hit.point };
+		Vector2 direction = new Vector2 (Mathf.Cos(Mathf.PI*value), Mathf.Sin(Mathf.PI*value));
+		RaycastHit2D hit = Physics2D.Raycast (origin, direction);
+		Vector3[] pos = {origin, hit.point};
 		line.SetPositions (pos);
-		Debug.Log(Quaternion.AngleAxis(laserAngle, Vector2.up)*direction);
-		Debug.Log("Hit: " + hit.point + " Angle: " + laserAngle);
-		laserAngle++;
-		if (laserAngle == 360) {
-			laserAngle = 0;
+		laserAngle += laserSpeed;
+		if (laserAngle > 0.5f) {
+			laserAngle = 0f;
 			line.enabled = false;
 			return true;
 		} else
