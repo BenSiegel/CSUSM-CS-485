@@ -17,6 +17,9 @@ public class GolemMinibossScript : MonoBehaviour {
 	private float actionTime;
 	private bool chargeRight;
 
+	private bool wall1;
+	private bool wall2;
+
 	// Use this for initialization
 	void Start () {
 		currentAction = (int)Actions.Track;
@@ -115,9 +118,28 @@ public class GolemMinibossScript : MonoBehaviour {
 			currentAction = (int)Actions.Track;
 	}
 
-	void OnTriggerEnter2D(Collider2D collision){
-		if(collision.gameObject.tag.Equals("eDamage")){
+	void OnTriggerEnter2D(Collider2D col){
+		if(col.gameObject.tag.Equals("eDamage")){
 			takeDamage ();
+		}
+		if (col.gameObject.tag.Equals ("Crush")) {
+			wall1 = true;
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
+			wall2 = true;
+		}
+		if (wall1 && wall2) {
+			health = 0;
+			takeDamage ();
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		if (col.gameObject.tag.Equals ("Crush")) {
+			wall1 = false;
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
+			wall2 = false;
 		}
 	}
 }
