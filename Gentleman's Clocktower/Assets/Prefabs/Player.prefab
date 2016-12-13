@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1000012174413158, guid: 71b5fc4722f00aa4b8f0ab54f56de76c, type: 2}
-  gunEnd: {fileID: 1000010183036728}
+  gunEnd: {fileID: 53948960}
   disappearDelay: 1
   firePower: 1000
   timeBetweenShooting: 0.5
