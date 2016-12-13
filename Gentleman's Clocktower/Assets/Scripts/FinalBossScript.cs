@@ -27,6 +27,7 @@ public class FinalBossScript : MonoBehaviour {
 	private LineRenderer line;
 	private float spawnTime;
 	private int currentSpawn;
+	private SpriteRenderer sr;
 
 	void Start () {
 		actionCount = 0;
@@ -35,6 +36,7 @@ public class FinalBossScript : MonoBehaviour {
 		line.enabled = false;
 		spawnTime = Time.time;
 		currentSpawn = 0;
+		sr = GetComponent<SpriteRenderer> ();
 	}
 
 	void Update () {
@@ -48,8 +50,10 @@ public class FinalBossScript : MonoBehaviour {
 				actionCount++;
 			break;
 		case 2:
-			if (MoveTo(movePoint2))
+			if (MoveTo (movePoint2)) {
 				actionCount++;
+				sr.flipX = false;
+			}
 			break;
 		case 3:
 			if (Laser())
@@ -60,16 +64,19 @@ public class FinalBossScript : MonoBehaviour {
 				actionCount++;
 			break;
 		case 5:
-			if (MoveTo(movePoint3))
+			if (MoveTo (movePoint3))
 				actionCount++;
+			
 			break;
 		case 6:
 			if (MoveTo(movePoint4))
 				actionCount++;
 			break;
 		case 7:
-			if (MoveTo(movePoint5))
+			if (MoveTo (movePoint5)) {
 				actionCount++;
+				sr.flipX = true;
+			}
 			break;
 		case 8:
 			if (Laser())
