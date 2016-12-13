@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
     }
 
 	void OnTriggerEnter2D(Collider2D col){
-		Debug.Log ("Trigger");
 		if (col.gameObject.tag.Equals ("Crush")) {
 			wall1 = true;
 		}

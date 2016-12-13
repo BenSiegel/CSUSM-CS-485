@@ -15,6 +15,11 @@ public class CrusherControler : MonoBehaviour {
 	public GameObject crusher7;
 	public GameObject crusher8;
 
+	public GameObject spawnField1;
+	public GameObject spawnField2;
+	public GameObject spawnField3;
+	public GameObject spawnField4;
+
 	private Transform tm1;
 	private Transform tm2;
 
@@ -35,15 +40,38 @@ public class CrusherControler : MonoBehaviour {
 			tm2.Translate (Vector3.left * speed * Time.deltaTime);
 			if (tm1.position.x >= move) {
 				moveSet++;
-				//tm1 = crusher3.GetComponent<Transform> ();
-				//tm2 = crusher4.GetComponent<Transform> ();
+				DestroyObject (spawnField1);
+				tm1 = crusher3.GetComponent<Transform> ();
+				tm2 = crusher4.GetComponent<Transform> ();
 			}
 			break;
 		case 1:
+			tm1.Translate (Vector3.right * speed * Time.deltaTime);
+			tm2.Translate (Vector3.left * speed * Time.deltaTime);
+			if (tm1.position.x >= move) {
+				moveSet++;
+				DestroyObject (spawnField2);
+				tm1 = crusher5.GetComponent<Transform> ();
+				tm2 = crusher6.GetComponent<Transform> ();
+			}
 			break;
 		case 2:
+			tm1.Translate (Vector3.right * speed * Time.deltaTime);
+			tm2.Translate (Vector3.left * speed * Time.deltaTime);
+			if (tm1.position.x >= move) {
+				moveSet++;
+				DestroyObject (spawnField3);
+				tm1 = crusher7.GetComponent<Transform> ();
+				tm2 = crusher8.GetComponent<Transform> ();
+			}
 			break;
 		case 3:
+			tm1.Translate (Vector3.right * speed * Time.deltaTime);
+			tm2.Translate (Vector3.left * speed * Time.deltaTime);
+			if (tm1.position.x >= move) {
+				moveSet++;
+				DestroyObject (spawnField4);
+			}
 			break;
 		}
 	}

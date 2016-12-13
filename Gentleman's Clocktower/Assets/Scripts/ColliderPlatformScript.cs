@@ -10,6 +10,12 @@ public class ColliderPlatformScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
+		if (col.gameObject.tag.Equals ("Crush")) {
+			DestroyObject (gameObject);
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
+			DestroyObject (gameObject);
+		}
 		if (!col.gameObject.tag.Equals ("Ground")) {
 			Physics2D.IgnoreCollision (setCol, col, true);
 		}
