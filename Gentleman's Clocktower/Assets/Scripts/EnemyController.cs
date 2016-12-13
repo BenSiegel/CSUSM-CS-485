@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour {
 	private enum EnemyTypes: int{Fly, Ground};
 	private int type;
 	private float jumpHeight;
+	private bool wall1;
+	private bool wall2;
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
@@ -37,6 +39,8 @@ public class EnemyController : MonoBehaviour {
 			type = (int)EnemyTypes.Fly;
 		else
 			type = (int)EnemyTypes.Ground;
+		wall1 = false;
+		wall2 = false;
 	}
 	
 	// Update is called once per frame
@@ -140,9 +144,9 @@ public class EnemyController : MonoBehaviour {
         }
 	}
 
-	void OnTriggerEnter2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D col)
     {
-		if(collision.gameObject.tag.Equals("eDamage"))
+		if(col.gameObject.tag.Equals("eDamage"))
         {
             health--;
             if (health <= 0)
@@ -150,6 +154,24 @@ public class EnemyController : MonoBehaviour {
                 DeadAction();
             }
         }
+		if (col.gameObject.tag.Equals ("Crush")) {
+			wall1 = true;
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
+			wall2 = true;
+		}
+		if (wall1 && wall2) {
+			DeadAction ();
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		if (col.gameObject.tag.Equals ("Crush")) {
+			wall1 = false;
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
+			wall2 = false;
+		}
 	}
 
 	void DeadAction(){

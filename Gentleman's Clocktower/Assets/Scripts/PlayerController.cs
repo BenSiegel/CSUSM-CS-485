@@ -108,19 +108,25 @@ public class PlayerController : MonoBehaviour
             health -= EGround2Attack;
         if (col.gameObject.tag.Equals("miniboss"))
             health -= MiniBossAttack;
-		if (col.transform.tag == "Crush"){
-			wall1 = true;
-		}
-		else if(col.transform.tag == "Crush1"){
-			wall2 = true;
-		}
     }
 
-	void OnCollisionExit2D(Collision2D col)
-	{
-		if (col.transform.tag == "Crush"){
+	void OnTriggerEnter2D(Collider2D col){
+		if (col.gameObject.tag.Equals ("Crush")) {
+			wall1 = true;
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
+			wall2 = true;
+		}
+		if (wall1 && wall2) {
+			health = 0;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		if (col.gameObject.tag.Equals ("Crush")) {
 			wall1 = false;
-		}else if(col.transform.tag == "Crush1"){
+		}
+		if (col.gameObject.tag.Equals ("Crush1")) {
 			wall2 = false;
 		}
 	}
