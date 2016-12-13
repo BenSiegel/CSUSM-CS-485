@@ -146,4 +146,32 @@ public class FinalBossScript : MonoBehaviour {
 			return true;
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.tag.Equals("eDamage"))
+		{
+			health--;
+			if(health == 0)
+			{
+				DeadAction();
+			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		if(collision.gameObject.tag.Equals("eDamage"))
+		{
+			health--;
+			if (health <= 0)
+			{
+				DeadAction();
+			}
+		}
+	}
+
+	void DeadAction(){
+		DestroyObject (gameObject);
+	}
 }
