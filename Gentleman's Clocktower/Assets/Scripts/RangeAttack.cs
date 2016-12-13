@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using AssemblyCSharp;
 
 public class RangeAttack : MonoBehaviour {
 
@@ -22,20 +23,30 @@ public class RangeAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(1))
+		if (Input.GetMouseButtonDown(1) && !GentlemansSingleton.GetPlayer().GetAnimator().GetBool("Attacking"))
         {//right click
+			shooting = true;
             showGun();
             pointGun();
             fireGun();
 			GetComponent<AudioSource>().Play ();
 		}
 
-		if(Time.time - shownTime > disappearDelay)
-			gun.transform.localScale = new Vector3 (0f,0f,0f);//hide gun
+		if (Time.time - shownTime > disappearDelay && shooting) {
+			shooting = false;
+			gun.transform.localScale = new Vector3 (0f, 0f, 0f);//hide gun
+			GentlemansSingleton.GetPlayer ().GetAnimator ().SetBool ("Attacking", false);
+		}
 	}
 
 	void showGun(){
 		gun.transform.localScale = new Vector3 (1f,1f,1f);
+		GentlemansSingleton.GetPlayer().GetAnimator().SetBool("Attacking", true);
+		if (Input.mousePosition.x > Screen.width / 2) {
+			GentlemansSingleton.GetPlayer ().GetSpriteRenderer ().flipX = false;
+		} else {
+			GentlemansSingleton.GetPlayer ().GetSpriteRenderer ().flipX = true;
+		}
 		shownTime = Time.time;
 	}
 

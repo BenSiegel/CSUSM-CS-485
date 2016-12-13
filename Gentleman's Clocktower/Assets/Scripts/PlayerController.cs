@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using AssemblyCSharp;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
@@ -21,14 +22,15 @@ public class PlayerController : MonoBehaviour
 	private bool wall1;
 	private bool wall2;
 
-    Animator anim;
-    Rigidbody2D rb;
-    SpriteRenderer sr;
+    private Animator anim;
+    private Rigidbody2D rb;
+	private SpriteRenderer sr;
 
     float someScale;
 
     void Start()
     {
+		GentlemansSingleton.SetPlayer (this);
         canJump = true;
         isJumping = false;
 		wall1 = false;
@@ -66,14 +68,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
             //sr.transform.localScale = new Vector2(-someScale, transform.localScale.y);
-            sr.flipX = true;
+			if (!anim.GetBool("Attacking"))
+            	sr.flipX = true;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
             //sr.transform.localScale = new Vector2(someScale, transform.localScale.y);
-            sr.flipX = false;
+			if (!anim.GetBool("Attacking"))
+            	sr.flipX = false;
         }
 
         if (Input.GetKey(KeyCode.W) && canJump)
@@ -83,6 +87,7 @@ public class PlayerController : MonoBehaviour
 			GetComponent<AudioSource>().Play ();
 			canJump = false;
 			isJumping = true;
+			anim.SetBool("Jumping", true);
         }
     }
 
@@ -92,10 +97,8 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
             anim.SetBool("Jumping", false);
-        } else
-        {
-            anim.SetBool("Jumping", true);
         }
+
         if (col.gameObject.tag.Equals("EFly1"))
             health -= EFly1Attack;
         if (col.gameObject.tag.Equals("EFly2"))
@@ -123,5 +126,13 @@ public class PlayerController : MonoBehaviour
 		}else if(col.transform.tag == "Crush1"){
 			wall2 = false;
 		}
+	}
+
+	public Animator GetAnimator(){
+		return anim;
+	}
+
+	public SpriteRenderer GetSpriteRenderer(){
+		return sr;
 	}
 }
