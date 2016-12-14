@@ -625,6 +625,7 @@ MonoBehaviour:
   speed: 10
   jump: 2
   health: 100
+  iFrameTime: 1
   EFly1Attack: 2
   EFly2Attack: 4
   EFly3Attack: 3

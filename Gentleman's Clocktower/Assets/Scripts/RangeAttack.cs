@@ -71,5 +71,6 @@ public class RangeAttack : MonoBehaviour {
                         Quaternion.identity);
         firedBullet.GetComponent<Rigidbody2D>().AddForce(
             gunEnd.GetComponent<Transform>().up * firePower);
+		Physics2D.IgnoreCollision (GetComponent<Collider2D> (), firedBullet.GetComponent<Collider2D> (), true);
     }
 }
