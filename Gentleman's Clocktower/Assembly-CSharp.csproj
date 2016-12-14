@@ -46,7 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GentlemansSingleton.cs" />
      <Compile Include="Assets\Scripts\BulletDistory.cs" />
      <Compile Include="Assets\Scripts\ColliderPlatformScript.cs" />
      <Compile Include="Assets\Scripts\CrushScript.cs" />
@@ -55,6 +54,7 @@
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\FinalBossScript.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GentlemansSingleton.cs" />
      <Compile Include="Assets\Scripts\GolemMinibossScript.cs" />
      <Compile Include="Assets\Scripts\LevelReset.cs" />
      <Compile Include="Assets\Scripts\LoadNextLevelScript.cs" />

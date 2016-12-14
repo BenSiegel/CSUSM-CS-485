@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     public int MiniBossAttack;
 
     private Transform tm;
-    private bool canJump;
-    private bool isJumping;
-    private float jumpToHight;
+    public bool canJump;
+    public bool isJumping;
+    public float jumpToHight;
 	private bool wall1;
 	private bool wall2;
 
