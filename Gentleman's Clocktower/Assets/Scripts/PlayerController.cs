@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-            canJump = true;
+			isJumping = false;
+			canJump = true;
             anim.SetBool("Jumping", false);
         }
 

@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\GolemMinibossScript.cs" />
      <Compile Include="Assets\Scripts\LevelReset.cs" />
      <Compile Include="Assets\Scripts\LoadLevel1.cs" />
+     <Compile Include="Assets\Scripts\LoadMainMenu.cs" />
      <Compile Include="Assets\Scripts\LoadNextLevelScript.cs" />
      <Compile Include="Assets\Scripts\LoadNextLevelScript3.cs" />
      <Compile Include="Assets\Scripts\MeleeAttack.cs" />
@@ -68,9 +69,6 @@
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\SpawnGolemTriggerScript.cs" />
      <Compile Include="Assets\Scripts\SpecialWeaponsController.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -85,9 +83,6 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
