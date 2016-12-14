@@ -22,10 +22,10 @@ namespace AssemblyCSharp
 			return activePlayer;
 		}
 
-		public void SetSceneNum(int num){
+		public static void SetSceneNum(int num){
 			sceneNum = num;
 		}
-		public int GetSceneNum(){
+		public static int GetSceneNum(){
 			return sceneNum;
 		}
 	}
