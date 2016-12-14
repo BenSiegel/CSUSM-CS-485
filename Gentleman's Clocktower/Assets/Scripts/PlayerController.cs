@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float speed;
     public float jump;
     public int health;
+	public float iFrameTime;
     public int EFly1Attack;
     public int EFly2Attack;
     public int EFly3Attack;
@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
 	private bool wall2;
     public int sceneNumb;
     private string currentScene;
+
+	private float timeToHit;
+	private bool flicker;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -48,6 +51,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         someScale = transform.localScale.x;
+
+		timeToHit = Time.time;
+		flicker = false;
     }
 
     void Update()
@@ -106,19 +112,39 @@ public class PlayerController : MonoBehaviour
 			canJump = true;
             anim.SetBool("Jumping", false);
         }
-
-        if (col.gameObject.tag.Equals("EFly1"))
-            health -= EFly1Attack;
-        if (col.gameObject.tag.Equals("EFly2"))
-            health -= EFly2Attack;
-        if (col.gameObject.tag.Equals("EFly3"))
-            health -= EFly3Attack;
-        if (col.gameObject.tag.Equals("EGround1"))
-            health -= EGround1Attack;
-        if (col.gameObject.tag.Equals("EGround2"))
-            health -= EGround2Attack;
-        if (col.gameObject.tag.Equals("miniboss"))
-            health -= MiniBossAttack;
+		if (timeToHit < Time.time) {
+			sr.color = Color.white;
+			if (col.gameObject.tag.Equals ("EFly1")) {
+				health -= EFly1Attack;
+				timeToHit = Time.time + iFrameTime;
+				sr.color = new Color (1, 1, 1, 0.5f);
+			}
+			if (col.gameObject.tag.Equals ("EFly2")) {
+				health -= EFly2Attack;
+				timeToHit = Time.time + iFrameTime;
+				sr.color = new Color (1, 1, 1, 0.5f);
+			}
+			if (col.gameObject.tag.Equals ("EFly3")) {
+				health -= EFly3Attack;
+				timeToHit = Time.time + iFrameTime;
+				sr.color = new Color (1, 1, 1, 0.5f);
+			}
+			if (col.gameObject.tag.Equals ("EGround1")) {
+				health -= EGround1Attack;
+				timeToHit = Time.time + iFrameTime;
+				sr.color = new Color (1, 1, 1, 0.5f);
+			}
+			if (col.gameObject.tag.Equals ("EGround2")) {
+				health -= EGround2Attack;
+				timeToHit = Time.time + iFrameTime;
+				sr.color = new Color (1, 1, 1, 0.5f);
+			}
+			if (col.gameObject.tag.Equals ("miniboss")) {
+				health -= MiniBossAttack;
+				timeToHit = Time.time + iFrameTime;
+				sr.color = new Color (1, 1, 1, 0.5f);
+			}
+		}
     }
 
 	void OnTriggerEnter2D(Collider2D col){

@@ -10,6 +10,7 @@ public class MeleeAttack : MonoBehaviour {
 	private bool right;
 	private float spinTime;
 	private Transform cane;
+	private SpriteRenderer caneSr;
 
 	void Start(){
 		turning = false;
@@ -18,6 +19,7 @@ public class MeleeAttack : MonoBehaviour {
 
 		cane = GetComponentInChildren<Transform> ();
 		cane.transform.localScale = new Vector3 (0f,0f,0f);
+		caneSr = GameObject.Find("Cane").GetComponent<SpriteRenderer> ();
 	}
 
 	void Update () {
@@ -31,9 +33,11 @@ public class MeleeAttack : MonoBehaviour {
 			if (Input.mousePosition.x > Screen.width / 2) {
 				right = true;
 				GentlemansSingleton.GetPlayer ().GetSpriteRenderer ().flipX = false;
+				caneSr.flipX = false;
 			} else {
 				right = false;
 				GentlemansSingleton.GetPlayer ().GetSpriteRenderer ().flipX = true;
+				caneSr.flipX = true;
 			}
 		}
 		if (turning) {
