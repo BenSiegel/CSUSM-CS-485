@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AssemblyCSharp;
 
 public class LevelController : MonoBehaviour
 {
@@ -22,13 +23,11 @@ public class LevelController : MonoBehaviour
     }
     public void restartLevel()
     {
-        PlayerController restartScene;
+        //PlayerController restartScene;
 
-        restartScene = (PlayerController)FindObjectOfType(typeof(PlayerController));
+        //restartScene = (PlayerController)FindObjectOfType(typeof(PlayerController));
 
-        int rScene = restartScene.sceneNumb;
-
-        switch (rScene)
+		switch (GentlemansSingleton.GetSceneNum ())
         {
             case (int)1:
                 Application.LoadLevel("LevelOneThePit");

@@ -5,6 +5,8 @@ namespace AssemblyCSharp
 	public class GentlemansSingleton
 	{
 		private static PlayerController activePlayer;
+		private static int sceneNum;
+
 		public GentlemansSingleton ()
 		{
 			activePlayer = null;
@@ -20,6 +22,12 @@ namespace AssemblyCSharp
 			return activePlayer;
 		}
 
+		public void SetSceneNum(int num){
+			sceneNum = num;
+		}
+		public int GetSceneNum(){
+			return sceneNum;
+		}
 	}
 }
 
