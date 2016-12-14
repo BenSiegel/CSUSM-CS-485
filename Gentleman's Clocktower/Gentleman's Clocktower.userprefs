@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GolemMinibossScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyController.cs" Line="32" Column="2" />
+      <File FileName="Assets\Scripts\EnemyController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CrusherControler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GolemMinibossScript.cs" Line="61" Column="31" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="58" Column="14" />
+      <File FileName="Assets\Scripts\GolemMinibossScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FinalBossScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
