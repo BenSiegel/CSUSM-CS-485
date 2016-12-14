@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour {
 	private bool wall2;
 	private bool canJump;
 
+	private SpriteRenderer sr;
+
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
@@ -41,10 +43,17 @@ public class EnemyController : MonoBehaviour {
 		wall2 = false;
 		canJump = false;
 		timeSinceJump = Time.time;
+
+		sr = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (player.transform.position.x <= this.transform.position.x) {
+			sr.flipX = false;
+		} else {
+			sr.flipX = true;
+		}
 		switch (type) {
 		case (int) EnemyTypes.Fly:
 			FlyingUpdate ();
