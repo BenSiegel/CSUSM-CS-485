@@ -5,18 +5,13 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject briefcase;
     public GameObject meleeWeaponA;
-    //public GameObject meleeWeaponB;
-    //public GameObject meleeWeaponC;
-
     public GameObject rangeWeaponA;
-    //public GameObject rangeWeaponB;
-    //public GameObject rangeWeaponC;
-
 
     public int health;
     public int damage;
     public int armour;
     public int speed;
+	public float timeBetweenJumps;
 
 	public float diveDistence;
 
@@ -28,8 +23,13 @@ public class EnemyController : MonoBehaviour {
 	private enum EnemyTypes: int{Fly, Ground};
 	private int type;
 	private float jumpHeight;
+	private float timeSinceJump;
 	private bool wall1;
 	private bool wall2;
+	private bool canJump;
+
+	private SpriteRenderer sr;
+
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
@@ -41,10 +41,19 @@ public class EnemyController : MonoBehaviour {
 			type = (int)EnemyTypes.Ground;
 		wall1 = false;
 		wall2 = false;
+		canJump = false;
+		timeSinceJump = Time.time;
+
+		sr = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (player.transform.position.x <= this.transform.position.x) {
+			sr.flipX = false;
+		} else {
+			sr.flipX = true;
+		}
 		switch (type) {
 		case (int) EnemyTypes.Fly:
 			FlyingUpdate ();
@@ -83,28 +92,29 @@ public class EnemyController : MonoBehaviour {
 	void GroundTrack(){
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
-		tm.Translate (new Vector3(playerTM.position.x - tm.position.x, 0f) * Time.deltaTime * speed);
-		if (playerTM.position.y > tm.position.y + 1) {
-			GetComponent<Rigidbody2D> ().isKinematic = true;
+		tm.Translate (new Vector3(playerTM.position.x - tm.position.x, 0f).normalized * Time.deltaTime * speed);
+		if (Time.time - timeSinceJump > timeBetweenJumps && canJump && playerTM.position.y > tm.position.y + 1) {
 			currentState = (int)Actions.Jump;
 			jumpHeight = tm.position.y + 2;
+			canJump = false;
 		}
 	}
 
 	void Jump(){
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate (new Vector3(0f, -jumpHeight,0f) * Time.deltaTime*speed);
-		//if (tm.position.y >= jumpHeight) {
-			GetComponent<Rigidbody2D> ().isKinematic = false;
+		Transform playerTM = player.GetComponent<Transform> ();
+		tm.Translate (Vector3.up*Time.deltaTime*speed*10);
+		if (tm.position.y >= jumpHeight) {
 			currentState = (int)Actions.Track;
-		//}
+			timeSinceJump = Time.time;
+		}
 	}
 
 	void FlyingTrack()
     {
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
-		tm.Translate ((playerTM.position - tm.position) * Time.deltaTime * speed);
+		tm.Translate ((playerTM.position - tm.position).normalized * Time.deltaTime * speed);
 		if ((playerTM.position - tm.position).magnitude < diveDistence)
         {
 			currentState = (int)Actions.Dive;
@@ -115,7 +125,7 @@ public class EnemyController : MonoBehaviour {
 	void Dive()
     {
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate ((movePoint - tm.position) * Time.deltaTime * speed);
+		tm.Translate ((movePoint - tm.position).normalized * Time.deltaTime * speed);
 		if ((tm.position-movePoint).magnitude < 1f)
         {
 			currentState = (int)Actions.Float;
@@ -126,7 +136,7 @@ public class EnemyController : MonoBehaviour {
 	void Float()
     {
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate ((movePoint - tm.position) * Time.deltaTime * speed);
+		tm.Translate ((movePoint - tm.position).normalized * Time.deltaTime * speed);
 		if ((tm.position-movePoint).magnitude < 1f)
 			currentState = (int)Actions.Track;
 	}
@@ -138,10 +148,12 @@ public class EnemyController : MonoBehaviour {
             health--;
             if(health == 0)
             {
-                spawnWeapons(collision);
                 DeadAction();
             }
         }
+		if (collision.gameObject.tag.Equals ("Ground")) {
+			canJump = true;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -181,66 +193,4 @@ public class EnemyController : MonoBehaviour {
 		GetComponent<AudioSource>().Play ();
         DestroyObject(gameObject,0f);
 	}
-
-    void spawnWeapons(Collision2D col)
-    {
-        Transform tm = GetComponent<Transform>();
-        Vector3 pos = new Vector3(tm.position.x, tm.position.y, tm.position.z);
-
-        var chanceForSpecWep = Random.Range(1, 100);
-        if (chanceForSpecWep >= 1 && chanceForSpecWep <= 50)
-        {
-            var specialWeaponSpawn = Random.Range(1, 100);
-            if (specialWeaponSpawn >= 1 && specialWeaponSpawn <= 100)
-            {
-                var smSpawn = Random.Range(1, 100);
-
-                if (smSpawn >= 1 && smSpawn <= 100)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
-                }
-                
-                /*
-                if (smSpawn >= 1 && smSpawn <= 50)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponA, pos, Quaternion.identity);
-                }
-                
-                else if (smSpawn >= 51 && smSpawn <= 81)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponB, pos, Quaternion.identity);
-                }
-
-                else if (smSpawn >= 82 && smSpawn <= 100)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(meleeWeaponC, pos, Quaternion.identity);
-                }*/
-            }
-
-            else if (specialWeaponSpawn >= 51 && specialWeaponSpawn <= 100)
-            {
-                var srSpawn = Random.Range(1, 100);
-
-                if(srSpawn >= 1 && srSpawn <= 100)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
-                }
-                /*
-                if (srSpawn >= 0 && srSpawn <= 50)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponA, pos, Quaternion.identity);
-                }
-                
-                else if (srSpawn >= 51 && srSpawn <= 81)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponB, pos, Quaternion.identity);
-                }
-
-                else if (srSpawn >= 82 && srSpawn <= 100)
-                {
-                    GameObject specialWeapon = (GameObject)Instantiate(rangeWeaponC, pos, Quaternion.identity);
-                }*/
-            }
-        }
-    }
 }

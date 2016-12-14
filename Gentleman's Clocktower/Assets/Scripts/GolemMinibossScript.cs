@@ -58,8 +58,7 @@ public class GolemMinibossScript : MonoBehaviour {
 			actionTime = Time.time;
 			if (playerTM.position.y - tm.position.y < tm.lossyScale.y) {
 				currentAction = (int)Actions.Charge;
-
-				if (playerTM.position.x - tm.position.x > 0) {
+				if (playerTM.position.x >= tm.position.x) {
 					chargeRight = true;
 					sr.flipX = false;
 				} else {
