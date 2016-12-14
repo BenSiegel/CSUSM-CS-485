@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2065431405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05294a4aa0abdcc429cbd4240b24db29, type: 3}
+  m_Script: {fileID: 11500000, guid: 4712d156e7eb6de42ae34ff0aaa2ca8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2065431408
@@ -1624,7 +1624,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2065431407}
-        m_MethodName: onClickButton1
+        m_MethodName: restartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1747,7 +1747,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2093037405}
-        m_MethodName: onClickButton1
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1800,6 +1800,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093037400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 999c2090456ec3a44821ff11d2cdc6e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4712d156e7eb6de42ae34ff0aaa2ca8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

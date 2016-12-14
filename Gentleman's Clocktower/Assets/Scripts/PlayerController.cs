@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using AssemblyCSharp;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float jumpToHight;
 	private bool wall1;
 	private bool wall2;
+    public int sceneNumb;
+    private string currentScene;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -31,10 +34,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 		GentlemansSingleton.SetPlayer (this);
+        
         canJump = true;
         isJumping = false;
 		wall1 = false;
 		wall2 = false;
+        sceneNumb = 0;
 
         tm = GetComponent<Transform>();
         jumpToHight = 0f;
@@ -147,6 +152,24 @@ public class PlayerController : MonoBehaviour
 
     void isDead()
     {
+        currentScene = SceneManager.GetActiveScene().name;
+
+        if(currentScene == "LevelOneThePit")
+        {
+            sceneNumb = 1;
+        }
+        else if (currentScene == "LevelTwoTheTower")
+        {
+            sceneNumb = 2;
+        }
+        else if (currentScene == "LevelThreeFinalBoss")
+        {
+            sceneNumb = 3;
+        }
+
         Application.LoadLevel("GameOver");
     }
 }
+
+
+           

@@ -1217,7 +1217,12 @@ Prefab:
     - target: {fileID: 114000012211329702, guid: 19411afc65fd8144f89097deb8430747,
         type: 2}
       propertyPath: health
-      value: 1000
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012211329702, guid: 19411afc65fd8144f89097deb8430747,
+        type: 2}
+      propertyPath: sceneNumb
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19411afc65fd8144f89097deb8430747, type: 2}
