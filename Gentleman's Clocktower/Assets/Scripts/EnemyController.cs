@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour {
     public int damage;
     public int armour;
     public int speed;
+	public float timeBetweenJumps;
 
 	public float diveDistence;
 
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour {
 	private enum EnemyTypes: int{Fly, Ground};
 	private int type;
 	private float jumpHeight;
+	private float timeSinceJump;
 	private bool wall1;
 	private bool wall2;
 	private bool canJump;
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour {
 		wall1 = false;
 		wall2 = false;
 		canJump = false;
+		timeSinceJump = Time.time;
 	}
 	
 	// Update is called once per frame
@@ -81,8 +84,7 @@ public class EnemyController : MonoBehaviour {
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
 		tm.Translate (new Vector3(playerTM.position.x - tm.position.x, 0f).normalized * Time.deltaTime * speed);
-		if (canJump && playerTM.position.y > tm.position.y + 1) {
-			//GetComponent<Rigidbody2D> ().isKinematic = true;
+		if (Time.time - timeSinceJump > timeBetweenJumps && canJump && playerTM.position.y > tm.position.y + 1) {
 			currentState = (int)Actions.Jump;
 			jumpHeight = tm.position.y + 2;
 			canJump = false;
@@ -94,8 +96,8 @@ public class EnemyController : MonoBehaviour {
 		Transform playerTM = player.GetComponent<Transform> ();
 		tm.Translate (Vector3.up*Time.deltaTime*speed*10);
 		if (tm.position.y >= jumpHeight) {
-			GetComponent<Rigidbody2D> ().isKinematic = false;
 			currentState = (int)Actions.Track;
+			timeSinceJump = Time.time;
 		}
 	}
 
