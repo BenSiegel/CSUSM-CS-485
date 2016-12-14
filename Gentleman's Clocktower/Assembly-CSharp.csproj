@@ -57,10 +57,14 @@
      <Compile Include="Assets\Scripts\GentlemansSingleton.cs" />
      <Compile Include="Assets\Scripts\GolemMinibossScript.cs" />
      <Compile Include="Assets\Scripts\LevelReset.cs" />
+     <Compile Include="Assets\Scripts\LoadLevel1.cs" />
      <Compile Include="Assets\Scripts\LoadNextLevelScript.cs" />
+     <Compile Include="Assets\Scripts\LoadNextLevelScript3.cs" />
      <Compile Include="Assets\Scripts\MeleeAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\QuitFromMain.cs" />
      <Compile Include="Assets\Scripts\RangeAttack.cs" />
+     <Compile Include="Assets\Scripts\SelectOnInput.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\SpawnGolemTriggerScript.cs" />
      <Compile Include="Assets\Scripts\SpecialWeaponsController.cs" />

@@ -15,10 +15,12 @@ public class CrusherControler : MonoBehaviour {
 	public GameObject crusher7;
 	public GameObject crusher8;
 
-	public GameObject spawnField1;
-	public GameObject spawnField2;
-	public GameObject spawnField3;
-	public GameObject spawnField4;
+	public GameObject wall1;
+	public GameObject wall2;
+	public GameObject wall3;
+	public GameObject wall4;
+	public GameObject wall5;
+	public GameObject wall6;
 
 	private Transform tm1;
 	private Transform tm2;
@@ -40,9 +42,10 @@ public class CrusherControler : MonoBehaviour {
 			tm2.Translate (Vector3.left * speed * Time.deltaTime);
 			if (tm1.position.x >= move) {
 				moveSet++;
-				DestroyObject (spawnField1);
 				tm1 = crusher3.GetComponent<Transform> ();
 				tm2 = crusher4.GetComponent<Transform> ();
+				wall1.tag = "Ground";
+				wall2.tag = "Ground";
 			}
 			break;
 		case 1:
@@ -50,9 +53,10 @@ public class CrusherControler : MonoBehaviour {
 			tm2.Translate (Vector3.left * speed * Time.deltaTime);
 			if (tm1.position.x >= move) {
 				moveSet++;
-				DestroyObject (spawnField2);
 				tm1 = crusher5.GetComponent<Transform> ();
 				tm2 = crusher6.GetComponent<Transform> ();
+				wall3.tag = "Ground";
+				wall4.tag = "Ground";
 			}
 			break;
 		case 2:
@@ -60,9 +64,10 @@ public class CrusherControler : MonoBehaviour {
 			tm2.Translate (Vector3.left * speed * Time.deltaTime);
 			if (tm1.position.x >= move) {
 				moveSet++;
-				DestroyObject (spawnField3);
 				tm1 = crusher7.GetComponent<Transform> ();
 				tm2 = crusher8.GetComponent<Transform> ();
+				wall5.tag = "Ground";
+				wall6.tag = "Ground";
 			}
 			break;
 		case 3:
@@ -70,7 +75,6 @@ public class CrusherControler : MonoBehaviour {
 			tm2.Translate (Vector3.left * speed * Time.deltaTime);
 			if (tm1.position.x >= move) {
 				moveSet++;
-				DestroyObject (spawnField4);
 			}
 			break;
 		}
