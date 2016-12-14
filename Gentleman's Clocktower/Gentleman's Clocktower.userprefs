@@ -1,28 +1,10 @@
-﻿<Properties StartupItem="Gentleman's Clocktower.CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MeleeAttack.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RangeAttack.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CrusherControler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GolemMinibossScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FinalBossScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MeleeAttack.cs" Line="33" Column="43" />
-      <File FileName="Assets\Scripts\RangeAttack.cs" Line="49" Column="4" />
+      <File FileName="Assets\Scripts\RangeAttack.cs" Line="69" Column="94" />
+      <File FileName="Assets\Scripts\ColliderPlatformScript.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Gentleman's Clocktower" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="MeleeAttack.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
