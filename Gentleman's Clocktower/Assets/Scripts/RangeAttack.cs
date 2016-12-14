@@ -13,12 +13,14 @@ public class RangeAttack : MonoBehaviour {
     private int bulletCount;
 	private float shownTime;
     private bool shooting;
+	private SpriteRenderer gunSr;
 
 	// Use this for initialization
 	void Start () {
         gun = GetComponentInChildren<Transform>();
 		gun.transform.localScale = new Vector3 (0f,0f,0f);
 		shownTime = Time.time;
+		gunSr = GameObject.Find("Gun").GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -44,8 +46,11 @@ public class RangeAttack : MonoBehaviour {
 		GentlemansSingleton.GetPlayer().GetAnimator().SetBool("Attacking", true);
 		if (Input.mousePosition.x > Screen.width / 2) {
 			GentlemansSingleton.GetPlayer ().GetSpriteRenderer ().flipX = false;
+			gunSr.flipX = false;
+			
 		} else {
 			GentlemansSingleton.GetPlayer ().GetSpriteRenderer ().flipX = true;
+			gunSr.flipX = true;
 		}
 		shownTime = Time.time;
 	}
