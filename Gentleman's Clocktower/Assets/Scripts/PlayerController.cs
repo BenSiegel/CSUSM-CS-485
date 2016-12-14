@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
             transform.Translate(new Vector3(0f, 1f) * Time.deltaTime * speed);
             if (transform.position.y >= jumpToHight)
             {
-                rb.isKinematic = false;
                 isJumping = false;
             }
         }
@@ -86,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && canJump)
         {
-			GetComponent<Rigidbody2D> ().isKinematic = true;
 			jumpToHight = transform.position.y + jump;
 			GetComponent<AudioSource>().Play ();
 			canJump = false;
