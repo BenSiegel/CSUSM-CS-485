@@ -174,11 +174,12 @@ public class FinalBossScript : MonoBehaviour {
 			if (health <= 0)
 			{
 				DeadAction();
-			}
+            }
 		}
 	}
 
 	void DeadAction(){
 		DestroyObject (gameObject);
-	}
+        Application.LoadLevel("EndGame");
+    }
 }

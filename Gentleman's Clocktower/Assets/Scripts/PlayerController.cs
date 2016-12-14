@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(health <= 0)
+        {
+            isDead();
+        }
         if (isJumping)
         {
             transform.Translate(new Vector3(0f, 1f) * Time.deltaTime * speed);
@@ -95,7 +99,8 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-            canJump = true;
+			isJumping = false;
+			canJump = true;
             anim.SetBool("Jumping", false);
         }
 
@@ -141,4 +146,9 @@ public class PlayerController : MonoBehaviour
 	public SpriteRenderer GetSpriteRenderer(){
 		return sr;
 	}
+
+    void isDead()
+    {
+        Application.LoadLevel("GameOver");
+    }
 }
