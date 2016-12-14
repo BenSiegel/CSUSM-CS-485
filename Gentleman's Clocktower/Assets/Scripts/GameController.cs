@@ -35,11 +35,18 @@ public class GameController : MonoBehaviour
         ttimer = (int)Time.time;
         timerText.text = "Timer: " + ttimer;
 		GolemMinibossScript golem;
+        FinalBossScript finalboss;
 		PlayerController player;
 		if(FindObjectOfType(typeof(GolemMinibossScript)) != null){
 			golem = (GolemMinibossScript)FindObjectOfType (typeof(GolemMinibossScript));
 			bossHealth.text = "Golem Health: " + golem.health;
-		}else
+		}
+        else if (FindObjectOfType(typeof(FinalBossScript)) != null)
+        {
+            finalboss = (FinalBossScript)FindObjectOfType(typeof(FinalBossScript));
+            bossHealth.text = "Final Boss Health: " + finalboss.health;
+        }
+        else
 			bossHealth.text = "";
 		if(FindObjectOfType(typeof(PlayerController)) != null){
 			player = (PlayerController)FindObjectOfType (typeof(PlayerController));
