@@ -132,7 +132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013504239312, guid: aa136b79a4937754c9be99e7488e6b23, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013504239312, guid: aa136b79a4937754c9be99e7488e6b23, type: 2}
       propertyPath: m_LocalScale.z
@@ -141,7 +141,7 @@ Prefab:
     - target: {fileID: 114000013541322968, guid: aa136b79a4937754c9be99e7488e6b23,
         type: 2}
       propertyPath: timeBetweenSpawns
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa136b79a4937754c9be99e7488e6b23, type: 2}
