@@ -5,13 +5,7 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject briefcase;
     public GameObject meleeWeaponA;
-    //public GameObject meleeWeaponB;
-    //public GameObject meleeWeaponC;
-
     public GameObject rangeWeaponA;
-    //public GameObject rangeWeaponB;
-    //public GameObject rangeWeaponC;
-
 
     public int health;
     public int damage;
@@ -30,6 +24,8 @@ public class EnemyController : MonoBehaviour {
 	private float jumpHeight;
 	private bool wall1;
 	private bool wall2;
+	private bool canJump;
+
 	// Use this for initialization
 	void Start () {
 		currentState = (int)Actions.Track;
@@ -41,6 +37,7 @@ public class EnemyController : MonoBehaviour {
 			type = (int)EnemyTypes.Ground;
 		wall1 = false;
 		wall2 = false;
+		canJump = false;
 	}
 	
 	// Update is called once per frame
@@ -84,20 +81,22 @@ public class EnemyController : MonoBehaviour {
 		Transform tm = GetComponent<Transform> ();
 		Transform playerTM = player.GetComponent<Transform> ();
 		tm.Translate (new Vector3(playerTM.position.x - tm.position.x, 0f).normalized * Time.deltaTime * speed);
-		if (playerTM.position.y > tm.position.y + 1) {
-			GetComponent<Rigidbody2D> ().isKinematic = true;
+		if (canJump && playerTM.position.y > tm.position.y + 1) {
+			//GetComponent<Rigidbody2D> ().isKinematic = true;
 			currentState = (int)Actions.Jump;
 			jumpHeight = tm.position.y + 2;
+			canJump = false;
 		}
 	}
 
 	void Jump(){
 		Transform tm = GetComponent<Transform> ();
-		tm.Translate (new Vector3(0f, -jumpHeight,0f).normalized * Time.deltaTime*speed);
-		//if (tm.position.y >= jumpHeight) {
+		Transform playerTM = player.GetComponent<Transform> ();
+		tm.Translate (Vector3.up*Time.deltaTime*speed*10);
+		if (tm.position.y >= jumpHeight) {
 			GetComponent<Rigidbody2D> ().isKinematic = false;
 			currentState = (int)Actions.Track;
-		//}
+		}
 	}
 
 	void FlyingTrack()
@@ -141,6 +140,9 @@ public class EnemyController : MonoBehaviour {
                 DeadAction();
             }
         }
+		if (collision.gameObject.tag.Equals ("Ground")) {
+			canJump = true;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
