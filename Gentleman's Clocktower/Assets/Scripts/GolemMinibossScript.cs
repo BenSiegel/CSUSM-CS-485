@@ -20,8 +20,11 @@ public class GolemMinibossScript : MonoBehaviour {
 	private bool wall1;
 	private bool wall2;
 
+	private SpriteRenderer sr;
+
 	// Use this for initialization
 	void Start () {
+		sr = GetComponent<SpriteRenderer>();
 		currentAction = (int)Actions.Track;
 		player = GameObject.FindGameObjectWithTag("Player");
 		actionTime = Time.time;
@@ -55,10 +58,14 @@ public class GolemMinibossScript : MonoBehaviour {
 			actionTime = Time.time;
 			if (playerTM.position.y - tm.position.y < tm.lossyScale.y) {
 				currentAction = (int)Actions.Charge;
-				if (playerTM.position.x - tm.position.x > 0)
+
+				if (playerTM.position.x - tm.position.x > 0) {
 					chargeRight = true;
-				else
+					sr.flipX = false;
+				} else {
 					chargeRight = false;
+					sr.flipX = true;
+				}
 			} else {
 				currentAction = (int)Actions.Jump;
 				moveToPoint = playerTM.position;
